@@ -2,35 +2,1385 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Livros | Lumina Books</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>
+        Catálogo | Lumina Books
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
+
 
 <body>
 
+
+    <!-- MENU -->
+
     <nav>
-        <a href="index.html">Visão Geral</a>
-        <a href="catalogo.html">Livros</a>
-        <a href="compras.html">Compras</a>
-        <a href="estoque.html">Estoque</a>
-        <a href="fornecedores.html">Fornecedores</a>
-        <a href="recomendacoes.html">Recomendações</a>
+
+        <a href="index.html">
+            Visão Geral
+        </a>
+
+        <a href="catalogo.html">
+            Livros
+        </a>
+
+        <a href="compras.html">
+            Compras
+        </a>
+
+        <a href="estoque.html">
+            Estoque
+        </a>
+
+        <a href="fornecedores.html">
+            Fornecedores
+        </a>
+
+        <a href="recomendacoes.html">
+            Recomendações
+        </a>
+
     </nav>
+
+
 
     <main>
 
-        <h1>📚 Catálogo de Livros</h1>
+
+        <!-- TÍTULO -->
+
+        <h1>
+            📚 Catálogo e Desempenho dos Livros
+        </h1>
 
         <p>
-            Análise de títulos, gêneros, autores,
-            preços e desempenho de vendas.
+            Análise de títulos, gêneros,
+            preços e desempenho comercial.
         </p>
 
+
+
+        <!-- FILTROS -->
+
+        <section class="filtros">
+
+            <div>
+
+                <label for="pesquisaLivro">
+                    Pesquisar livro
+                </label>
+
+                <input
+                    type="text"
+                    id="pesquisaLivro"
+                    placeholder="Digite um título..."
+                >
+
+            </div>
+
+
+            <div>
+
+                <label for="filtroGenero">
+                    Gênero
+                </label>
+
+                <select id="filtroGenero">
+
+                    <option value="Todos">
+                        Todos
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- KPIs -->
+
+        <section class="cards">
+
+
+            <div class="card">
+
+                <span>
+                    Títulos cadastrados
+                </span>
+
+                <strong id="kpiTitulos">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="card">
+
+                <span>
+                    Preço médio
+                </span>
+
+                <strong id="kpiPrecoMedio">
+                    R$ 0
+                </strong>
+
+            </div>
+
+
+            <div class="card">
+
+                <span>
+                    Livro mais vendido
+                </span>
+
+                <strong id="kpiMaisVendido">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="card">
+
+                <span>
+                    Gênero líder
+                </span>
+
+                <strong id="kpiGenero">
+                    -
+                </strong>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- GRÁFICOS -->
+
+        <section class="graficos">
+
+
+            <div class="grafico-card">
+
+                <h2>
+                    Top livros mais vendidos
+                </h2>
+
+                <canvas
+                    id="graficoMaisVendidos">
+                </canvas>
+
+            </div>
+
+
+            <div class="grafico-card">
+
+                <h2>
+                    Preço por título
+                </h2>
+
+                <canvas
+                    id="graficoPrecos">
+                </canvas>
+
+            </div>
+
+
+            <div class="grafico-card">
+
+                <h2>
+                    Receita por gênero
+                </h2>
+
+                <canvas
+                    id="graficoGenero">
+                </canvas>
+
+            </div>
+
+
+            <div class="grafico-card">
+
+                <h2>
+                    Evolução mensal do livro líder
+                </h2>
+
+                <canvas
+                    id="graficoEvolucao">
+                </canvas>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- TABELA -->
+
+        <section class="tabela-container">
+
+            <h2>
+                Detalhamento dos livros
+            </h2>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Título
+                        </th>
+
+                        <th>
+                            Gênero
+                        </th>
+
+                        <th>
+                            Autor
+                        </th>
+
+                        <th>
+                            Preço
+                        </th>
+
+                        <th>
+                            Vendidos
+                        </th>
+
+                        <th>
+                            Receita
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="tabelaLivros">
+
+                </tbody>
+
+
+            </table>
+
+        </section>
+
+
     </main>
+
+
+
+    <!-- CHART.JS -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+
+
+    <!-- FUNÇÕES DO PROJETO -->
+
+    <script
+        src="js/shared.js">
+    </script>
+
+
+
+    <!-- CÓDIGO DO DASHBOARD -->
+
+    <script>
+
+
+        let livros = [];
+
+        let vendas = [];
+
+        let graficoMaisVendidos;
+
+        let graficoPrecos;
+
+        let graficoGenero;
+
+        let graficoEvolucao;
+
+
+
+        // ========================================
+        // INICIAR DASHBOARD
+        // ========================================
+
+        async function iniciarDashboard() {
+
+
+            livros =
+                await carregarCSV(
+                    "data/livros.csv"
+                );
+
+
+            vendas =
+                await carregarCSV(
+                    "data/vendas.csv"
+                );
+
+
+            prepararGeneros();
+
+
+            atualizarDashboard();
+
+
+        }
+
+
+
+        // ========================================
+        // GÊNEROS
+        // ========================================
+
+        function prepararGeneros() {
+
+
+            const generos = [
+
+                ...new Set(
+                    livros.map(
+                        livro =>
+                            livro.genero
+                    )
+                )
+
+            ];
+
+
+            generos.sort();
+
+
+            generos.forEach(genero => {
+
+
+                const opcao =
+                    document.createElement(
+                        "option"
+                    );
+
+
+                opcao.value = genero;
+
+                opcao.textContent = genero;
+
+
+                document
+                    .getElementById(
+                        "filtroGenero"
+                    )
+                    .appendChild(
+                        opcao
+                    );
+
+
+            });
+
+
+        }
+
+
+
+        // ========================================
+        // FILTROS
+        // ========================================
+
+        function obterLivrosFiltrados() {
+
+
+            const pesquisa =
+                document
+                    .getElementById(
+                        "pesquisaLivro"
+                    )
+                    .value
+                    .toLowerCase();
+
+
+            const genero =
+                document
+                    .getElementById(
+                        "filtroGenero"
+                    )
+                    .value;
+
+
+            return livros.filter(
+                livro => {
+
+
+                    const correspondePesquisa =
+
+                        livro.titulo
+                            .toLowerCase()
+                            .includes(
+                                pesquisa
+                            );
+
+
+                    const correspondeGenero =
+
+                        genero === "Todos"
+
+                        ||
+
+                        livro.genero === genero;
+
+
+                    return (
+
+                        correspondePesquisa
+
+                        &&
+
+                        correspondeGenero
+
+                    );
+
+
+                }
+            );
+
+
+        }
+
+
+
+        // ========================================
+        // ATUALIZAR TUDO
+        // ========================================
+
+        function atualizarDashboard() {
+
+
+            const livrosFiltrados =
+                obterLivrosFiltrados();
+
+
+            const idsPermitidos =
+                livrosFiltrados.map(
+                    livro =>
+                        livro.livro_id
+                );
+
+
+            const vendasFiltradas =
+                vendas.filter(
+                    venda =>
+                        idsPermitidos.includes(
+                            venda.livro_id
+                        )
+                );
+
+
+            atualizarKPIs(
+                livrosFiltrados,
+                vendasFiltradas
+            );
+
+
+            atualizarGraficos(
+                livrosFiltrados,
+                vendasFiltradas
+            );
+
+
+            atualizarTabela(
+                livrosFiltrados,
+                vendasFiltradas
+            );
+
+
+        }
+
+
+
+        // ========================================
+        // KPIs
+        // ========================================
+
+        function atualizarKPIs(
+            livrosFiltrados,
+            vendasFiltradas
+        ) {
+
+
+            // Quantidade de títulos
+
+            document
+                .getElementById(
+                    "kpiTitulos"
+                )
+                .textContent =
+                    livrosFiltrados.length;
+
+
+
+            // Preço médio
+
+            const precoTotal =
+                livrosFiltrados.reduce(
+                    (total, livro) =>
+
+                        total +
+                        Number(
+                            livro.preco
+                        ),
+
+                    0
+                );
+
+
+            const precoMedio =
+
+                livrosFiltrados.length > 0
+
+                ?
+
+                precoTotal /
+                livrosFiltrados.length
+
+                :
+
+                0;
+
+
+            document
+                .getElementById(
+                    "kpiPrecoMedio"
+                )
+                .textContent =
+                    formatarMoeda(
+                        precoMedio
+                    );
+
+
+
+            // Vendas por livro
+
+            const vendasPorLivro = {};
+
+
+            vendasFiltradas.forEach(
+                venda => {
+
+
+                    if (
+                        !vendasPorLivro[
+                            venda.livro_id
+                        ]
+                    ) {
+
+                        vendasPorLivro[
+                            venda.livro_id
+                        ] = 0;
+
+                    }
+
+
+                    vendasPorLivro[
+                        venda.livro_id
+                    ] +=
+                        Number(
+                            venda.quantidade
+                        );
+
+
+                }
+            );
+
+
+
+            // Livro mais vendido
+
+            let idMaisVendido = null;
+
+            let maiorQuantidade = 0;
+
+
+            Object.entries(
+                vendasPorLivro
+            ).forEach(
+                ([id, quantidade]) => {
+
+
+                    if (
+                        quantidade >
+                        maiorQuantidade
+                    ) {
+
+                        maiorQuantidade =
+                            quantidade;
+
+                        idMaisVendido =
+                            id;
+
+                    }
+
+
+                }
+            );
+
+
+            const livroMaisVendido =
+                livros.find(
+                    livro =>
+                        livro.livro_id ===
+                        idMaisVendido
+                );
+
+
+            document
+                .getElementById(
+                    "kpiMaisVendido"
+                )
+                .textContent =
+
+                    livroMaisVendido
+
+                    ?
+
+                    livroMaisVendido.titulo
+
+                    :
+
+                    "-";
+
+
+
+            // Receita por gênero
+
+            const receitaGenero =
+                agruparESomar(
+                    vendasFiltradas,
+                    "genero",
+                    "receita"
+                );
+
+
+            let generoLider = "-";
+
+            let maiorReceita = 0;
+
+
+            Object.entries(
+                receitaGenero
+            ).forEach(
+                ([genero, receita]) => {
+
+
+                    if (
+                        receita >
+                        maiorReceita
+                    ) {
+
+                        maiorReceita =
+                            receita;
+
+                        generoLider =
+                            genero;
+
+                    }
+
+
+                }
+            );
+
+
+            document
+                .getElementById(
+                    "kpiGenero"
+                )
+                .textContent =
+                    generoLider;
+
+
+        }
+
+
+
+        // ========================================
+        // GRÁFICOS
+        // ========================================
+
+        function atualizarGraficos(
+            livrosFiltrados,
+            vendasFiltradas
+        ) {
+
+
+            atualizarGraficoMaisVendidos(
+                livrosFiltrados,
+                vendasFiltradas
+            );
+
+
+            atualizarGraficoPrecos(
+                livrosFiltrados
+            );
+
+
+            atualizarGraficoGenero(
+                vendasFiltradas
+            );
+
+
+            atualizarGraficoEvolucao(
+                livrosFiltrados,
+                vendasFiltradas
+            );
+
+
+        }
+
+
+
+        // TOP LIVROS
+
+        function atualizarGraficoMaisVendidos(
+            livrosFiltrados,
+            vendasFiltradas
+        ) {
+
+
+            const totais = {};
+
+
+            vendasFiltradas.forEach(
+                venda => {
+
+
+                    totais[
+                        venda.livro_id
+                    ] =
+
+                        (
+                            totais[
+                                venda.livro_id
+                            ]
+
+                            || 0
+                        )
+
+                        +
+
+                        Number(
+                            venda.quantidade
+                        );
+
+
+                }
+            );
+
+
+            const ranking =
+                livrosFiltrados
+                    .map(
+                        livro => ({
+
+                            titulo:
+                                livro.titulo,
+
+                            quantidade:
+                                totais[
+                                    livro.livro_id
+                                ]
+
+                                || 0
+
+                        })
+                    )
+                    .sort(
+                        (a, b) =>
+                            b.quantidade -
+                            a.quantidade
+                    )
+                    .slice(
+                        0,
+                        10
+                    );
+
+
+            if (
+                graficoMaisVendidos
+            ) {
+
+                graficoMaisVendidos
+                    .destroy();
+
+            }
+
+
+            graficoMaisVendidos =
+                new Chart(
+
+                    document
+                        .getElementById(
+                            "graficoMaisVendidos"
+                        ),
+
+                    {
+
+                        type:
+                            "bar",
+
+                        data: {
+
+                            labels:
+                                ranking.map(
+                                    item =>
+                                        item.titulo
+                                ),
+
+                            datasets: [
+
+                                {
+
+                                    label:
+                                        "Unidades vendidas",
+
+                                    data:
+                                        ranking.map(
+                                            item =>
+                                                item.quantidade
+                                        )
+
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true,
+
+                            indexAxis:
+                                "y"
+
+                        }
+
+                    }
+
+                );
+
+
+        }
+
+
+
+        // PREÇOS
+
+        function atualizarGraficoPrecos(
+            livrosFiltrados
+        ) {
+
+
+            const livrosOrdenados =
+                [...livrosFiltrados]
+                    .sort(
+                        (a, b) =>
+
+                            Number(
+                                b.preco
+                            )
+
+                            -
+
+                            Number(
+                                a.preco
+                            )
+                    )
+                    .slice(
+                        0,
+                        12
+                    );
+
+
+            if (
+                graficoPrecos
+            ) {
+
+                graficoPrecos
+                    .destroy();
+
+            }
+
+
+            graficoPrecos =
+                new Chart(
+
+                    document
+                        .getElementById(
+                            "graficoPrecos"
+                        ),
+
+                    {
+
+                        type:
+                            "bar",
+
+                        data: {
+
+                            labels:
+                                livrosOrdenados.map(
+                                    livro =>
+                                        livro.titulo
+                                ),
+
+                            datasets: [
+
+                                {
+
+                                    label:
+                                        "Preço (R$)",
+
+                                    data:
+                                        livrosOrdenados.map(
+                                            livro =>
+                                                Number(
+                                                    livro.preco
+                                                )
+                                        )
+
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true
+
+                        }
+
+                    }
+
+                );
+
+
+        }
+
+
+
+        // RECEITA POR GÊNERO
+
+        function atualizarGraficoGenero(
+            vendasFiltradas
+        ) {
+
+
+            const receitaGenero =
+                agruparESomar(
+                    vendasFiltradas,
+                    "genero",
+                    "receita"
+                );
+
+
+            if (
+                graficoGenero
+            ) {
+
+                graficoGenero
+                    .destroy();
+
+            }
+
+
+            graficoGenero =
+                new Chart(
+
+                    document
+                        .getElementById(
+                            "graficoGenero"
+                        ),
+
+                    {
+
+                        type:
+                            "doughnut",
+
+                        data: {
+
+                            labels:
+                                Object.keys(
+                                    receitaGenero
+                                ),
+
+                            datasets: [
+
+                                {
+
+                                    data:
+                                        Object.values(
+                                            receitaGenero
+                                        )
+
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true
+
+                        }
+
+                    }
+
+                );
+
+
+        }
+
+
+
+        // EVOLUÇÃO DO LIVRO LÍDER
+
+        function atualizarGraficoEvolucao(
+            livrosFiltrados,
+            vendasFiltradas
+        ) {
+
+
+            const totais = {};
+
+
+            vendasFiltradas.forEach(
+                venda => {
+
+
+                    totais[
+                        venda.livro_id
+                    ] =
+
+                        (
+                            totais[
+                                venda.livro_id
+                            ]
+
+                            || 0
+                        )
+
+                        +
+
+                        Number(
+                            venda.quantidade
+                        );
+
+
+                }
+            );
+
+
+            const ranking =
+                Object.entries(
+                    totais
+                )
+                .sort(
+                    (a, b) =>
+                        b[1] -
+                        a[1]
+                );
+
+
+            const idLider =
+                ranking.length > 0
+
+                ?
+
+                ranking[0][0]
+
+                :
+
+                null;
+
+
+            const vendasLider =
+                vendasFiltradas
+                    .filter(
+                        venda =>
+                            venda.livro_id ===
+                            idLider
+                    )
+                    .sort(
+                        (a, b) =>
+                            Number(
+                                a.mes_num
+                            )
+
+                            -
+
+                            Number(
+                                b.mes_num
+                            )
+                    );
+
+
+            const livroLider =
+                livrosFiltrados.find(
+                    livro =>
+                        livro.livro_id ===
+                        idLider
+                );
+
+
+            if (
+                graficoEvolucao
+            ) {
+
+                graficoEvolucao
+                    .destroy();
+
+            }
+
+
+            graficoEvolucao =
+                new Chart(
+
+                    document
+                        .getElementById(
+                            "graficoEvolucao"
+                        ),
+
+                    {
+
+                        type:
+                            "line",
+
+                        data: {
+
+                            labels:
+                                vendasLider.map(
+                                    venda =>
+                                        venda.mes
+                                ),
+
+                            datasets: [
+
+                                {
+
+                                    label:
+
+                                        livroLider
+
+                                        ?
+
+                                        livroLider.titulo
+
+                                        :
+
+                                        "Sem dados",
+
+                                    data:
+                                        vendasLider.map(
+                                            venda =>
+                                                Number(
+                                                    venda.quantidade
+                                                )
+                                        ),
+
+                                    tension:
+                                        0.3
+
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true
+
+                        }
+
+                    }
+
+                );
+
+
+        }
+
+
+
+        // ========================================
+        // TABELA
+        // ========================================
+
+        function atualizarTabela(
+            livrosFiltrados,
+            vendasFiltradas
+        ) {
+
+
+            const corpo =
+                document
+                    .getElementById(
+                        "tabelaLivros"
+                    );
+
+
+            corpo.innerHTML = "";
+
+
+            livrosFiltrados.forEach(
+                livro => {
+
+
+                    const vendasLivro =
+                        vendasFiltradas.filter(
+                            venda =>
+                                venda.livro_id ===
+                                livro.livro_id
+                        );
+
+
+                    const quantidade =
+                        vendasLivro.reduce(
+                            (total, venda) =>
+
+                                total +
+                                Number(
+                                    venda.quantidade
+                                ),
+
+                            0
+                        );
+
+
+                    const receita =
+                        vendasLivro.reduce(
+                            (total, venda) =>
+
+                                total +
+                                Number(
+                                    venda.receita
+                                ),
+
+                            0
+                        );
+
+
+                    const linha =
+                        document
+                            .createElement(
+                                "tr"
+                            );
+
+
+                    linha.innerHTML = `
+
+                        <td>
+                            ${livro.titulo}
+                        </td>
+
+                        <td>
+                            ${livro.genero}
+                        </td>
+
+                        <td>
+                            ${livro.autor}
+                        </td>
+
+                        <td>
+                            ${formatarMoeda(
+                                livro.preco
+                            )}
+                        </td>
+
+                        <td>
+                            ${formatarNumero(
+                                quantidade
+                            )}
+                        </td>
+
+                        <td>
+                            ${formatarMoeda(
+                                receita
+                            )}
+                        </td>
+
+                    `;
+
+
+                    corpo.appendChild(
+                        linha
+                    );
+
+
+                }
+            );
+
+
+        }
+
+
+
+        // ========================================
+        // EVENTOS DOS FILTROS
+        // ========================================
+
+        document
+            .getElementById(
+                "pesquisaLivro"
+            )
+            .addEventListener(
+                "input",
+                atualizarDashboard
+            );
+
+
+        document
+            .getElementById(
+                "filtroGenero"
+            )
+            .addEventListener(
+                "change",
+                atualizarDashboard
+            );
+
+
+
+        iniciarDashboard();
+
+
+    </script>
+
 
 </body>
 
