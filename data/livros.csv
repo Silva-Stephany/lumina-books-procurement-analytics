@@ -1,6 +1,25 @@
-livro_id;titulo;genero;autor;preco
-L001;O Reino de Âmbar;Fantasia;Lívia Monteiro;69.90
-L002;Jardim de Inverno;Romance;Marina Prado;44.90
-L003;O Último Horizonte;Ficção Científica;Davi Moura;59.90
-L004;A Última Testemunha;Suspense;Nina Amaral;54.90
-L005;O Quarto Escuro;Terror;Luiz Brandão;49.90
+livro_id;titulo;genero;autor;preco;fornecedor_principal;estoque_inicial;estoque_minimo
+L001;O Reino de Âmbar;Fantasia;Lívia Monteiro;69.90;Aurora Distribuidora;90;20
+L002;A Torre de Vidro;Fantasia;Caio Nunes;64.90;Nexo Editorial;80;18
+L003;Crônicas do Norte;Fantasia;Rafael Vilar;74.90;Página Sul Atacado;75;17
+L004;Jardim de Inverno;Romance;Marina Prado;44.90;Horizonte Livros;100;22
+L005;Cartas para Lisboa;Romance;Helena Vasques;49.90;Vertex Distribuição;95;20
+L006;Depois da Chuva;Romance;Bruno Teles;42.90;Saber & Cia;105;24
+L007;O Último Horizonte;Ficção Científica;Davi Moura;59.90;Aurora Distribuidora;88;19
+L008;Atlas de Marte;Ficção Científica;Clara Reis;66.90;Nexo Editorial;76;17
+L009;Código Aurora;Ficção Científica;Ian Duarte;62.90;Página Sul Atacado;82;18
+L010;A Última Testemunha;Suspense;Nina Amaral;54.90;Horizonte Livros;91;20
+L011;Silêncio no 402;Suspense;Paulo Ferraz;47.90;Vertex Distribuição;98;21
+L012;O Relógio Quebrado;Suspense;Maya Costa;52.90;Saber & Cia;86;19
+L013;O Quarto Escuro;Terror;Luiz Brandão;49.90;Aurora Distribuidora;84;18
+L014;A Casa Sem Janelas;Terror;Teresa Vale;46.90;Nexo Editorial;89;20
+L015;Ecos da Meia-Noite;Terror;Otávio Serra;51.90;Página Sul Atacado;80;18
+L016;Liderança Essencial;Negócios;André Campos;79.90;Horizonte Livros;68;15
+L017;Estratégia em Movimento;Negócios;Beatriz Lopes;84.90;Vertex Distribuição;64;14
+L018;Decisões que Escalam;Negócios;Marcos Esteves;76.90;Saber & Cia;70;15
+L019;Além da Montanha;Biografia;Renata Alves;58.90;Aurora Distribuidora;72;16
+L020;Uma Vida em Movimento;Biografia;Carlos Menezes;61.90;Nexo Editorial;67;15
+L021;Memórias de um Inventor;Biografia;Tânia Ribeiro;63.90;Página Sul Atacado;66;15
+L022;Hábitos que Permanecem;Desenvolvimento Pessoal;Joana Leal;55.90;Horizonte Livros;96;21
+L023;Foco sem Pressa;Desenvolvimento Pessoal;Pedro Maia;57.90;Vertex Distribuição;93;20
+L024;Coragem para Recomeçar;Desenvolvimento Pessoal;Sofia Antunes;53.90;Saber & Cia;99;22
