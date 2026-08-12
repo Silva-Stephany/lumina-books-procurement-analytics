@@ -1,6 +1,37 @@
-mes;livro_id;quantidade;preco;receita
-Jan;L001;120;69.90;8388
-Jan;L002;95;44.90;4265.50
-Jan;L003;135;59.90;8086.50
-Fev;L001;140;69.90;9786
-Fev;L002;102;44.90;4579.80
+mes,mes_num,livro_id,titulo,genero,quantidade,preco,receita
+Jan,1,L001,O Reino de Âmbar,Fantasia,120,69.90,8388.00
+Fev,2,L001,O Reino de Âmbar,Fantasia,128,69.90,8947.20
+Mar,3,L001,O Reino de Âmbar,Fantasia,135,69.90,9436.50
+Abr,4,L001,O Reino de Âmbar,Fantasia,142,69.90,9925.80
+Mai,5,L001,O Reino de Âmbar,Fantasia,150,69.90,10485.00
+Jun,6,L001,O Reino de Âmbar,Fantasia,157,69.90,10974.30
+Jul,7,L001,O Reino de Âmbar,Fantasia,149,69.90,10415.10
+Ago,8,L001,O Reino de Âmbar,Fantasia,162,69.90,11323.80
+Set,9,L001,O Reino de Âmbar,Fantasia,170,69.90,11883.00
+Out,10,L001,O Reino de Âmbar,Fantasia,185,69.90,12931.50
+Nov,11,L001,O Reino de Âmbar,Fantasia,202,69.90,14119.80
+Dez,12,L001,O Reino de Âmbar,Fantasia,225,69.90,15727.50
+Jan,1,L004,Jardim de Inverno,Romance,95,44.90,4265.50
+Fev,2,L004,Jardim de Inverno,Romance,102,44.90,4579.80
+Mar,3,L004,Jardim de Inverno,Romance,108,44.90,4849.20
+Abr,4,L004,Jardim de Inverno,Romance,112,44.90,5028.80
+Mai,5,L004,Jardim de Inverno,Romance,119,44.90,5343.10
+Jun,6,L004,Jardim de Inverno,Romance,124,44.90,5567.60
+Jul,7,L004,Jardim de Inverno,Romance,118,44.90,5298.20
+Ago,8,L004,Jardim de Inverno,Romance,126,44.90,5657.40
+Set,9,L004,Jardim de Inverno,Romance,132,44.90,5926.80
+Out,10,L004,Jardim de Inverno,Romance,140,44.90,6286.00
+Nov,11,L004,Jardim de Inverno,Romance,151,44.90,6779.90
+Dez,12,L004,Jardim de Inverno,Romance,168,44.90,7543.20
+Jan,1,L007,O Último Horizonte,Ficção Científica,135,59.90,8086.50
+Fev,2,L007,O Último Horizonte,Ficção Científica,142,59.90,8505.80
+Mar,3,L007,O Último Horizonte,Ficção Científica,148,59.90,8865.20
+Abr,4,L007,O Último Horizonte,Ficção Científica,156,59.90,9344.40
+Mai,5,L007,O Último Horizonte,Ficção Científica,164,59.90,9823.60
+Jun,6,L007,O Último Horizonte,Ficção Científica,172,59.90,10302.80
+Jul,7,L007,O Último Horizonte,Ficção Científica,168,59.90,10063.20
+Ago,8,L007,O Último Horizonte,Ficção Científica,177,59.90,10602.30
+Set,9,L007,O Último Horizonte,Ficção Científica,186,59.90,11141.40
+Out,10,L007,O Último Horizonte,Ficção Científica,198,59.90,11860.20
+Nov,11,L007,O Último Horizonte,Ficção Científica,214,59.90,12818.60
+Dez,12,L007,O Último Horizonte,Ficção Científica,236,59.90,14136.40
