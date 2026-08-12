@@ -1,18 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f6fa;
-    color: #172033;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --roxo-escuro: #2e1065;
+    --roxo: #5b21b6;
+    --roxo-medio: #7c3aed;
+    --lilas: #c4b5fd;
+    --lilas-claro: #ede9fe;
+    --fundo: #f8f5ff;
+    --texto: #24153d;
+    --texto-suave: #6b5b7d;
+    --branco: #ffffff;
+
+    --fonte-titulo: 'Cormorant Garamond', serif;
+    --fonte-texto: 'Inter', sans-serif;
 }
 
-nav {
-    background-color: #111827;
-    padding: 16px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+body {
+    margin: 0;
+
+    font-family: var(--fonte-texto);
+
+    color: var(--texto);
+
+    background:
+        linear-gradient(
+            rgba(248, 245, 255, 0.92),
+            rgba(243, 239, 255, 0.92)
+        ),
+        url("../images/fundo-livraria.png");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    min-height: 100vh;
 }
 
 nav a {
