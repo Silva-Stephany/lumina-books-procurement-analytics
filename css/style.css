@@ -721,3 +721,364 @@ main::before {
     }
 
 }
+/* ========================================
+   HERO - IDENTIDADE DE LIVRARIA
+======================================== */
+
+.hero-livraria {
+    position: relative;
+
+    margin-bottom: 32px;
+
+    padding: 28px 30px 20px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2e1065 0%,
+            #4c1d95 45%,
+            #6d28d9 100%
+        );
+
+    box-shadow:
+        0 14px 35px
+        rgba(46, 16, 101, 0.22);
+}
+
+
+.hero-livraria::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    right: -70px;
+    top: -100px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+}
+
+
+.hero-livraria::after {
+    content: "LUMINA";
+
+    position: absolute;
+
+    right: 20px;
+    top: -6px;
+
+    font-size: 76px;
+    font-weight: 800;
+
+    letter-spacing: 8px;
+
+    color:
+        rgba(255, 255, 255, 0.035);
+
+    pointer-events: none;
+}
+
+
+.hero-conteudo {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 30px;
+}
+
+
+.hero-marca {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+}
+
+
+.hero-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 16px;
+
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
+    font-size: 30px;
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+.hero-marca strong {
+    display: block;
+
+    color: white;
+
+    font-size: 25px;
+
+    letter-spacing: 0.4px;
+}
+
+
+.hero-marca small {
+    display: block;
+
+    margin-top: 5px;
+
+    color:
+        #ddd6fe;
+
+    font-size: 13px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* ========================================
+   ESTANTE DECORATIVA
+======================================== */
+
+.estante-decorativa {
+    position: relative;
+
+    display: flex;
+    align-items: flex-end;
+
+    gap: 5px;
+
+    height: 76px;
+
+    padding:
+        0 12px 7px;
+
+    border-bottom:
+        7px solid #7c4a2d;
+}
+
+
+.estante-decorativa::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -12px;
+
+    height: 5px;
+
+    border-radius:
+        0 0 6px 6px;
+
+    background:
+        #4b2d1b;
+
+    opacity: 0.75;
+}
+
+
+.livro {
+    display: block;
+
+    width: 15px;
+
+    border-radius:
+        3px 3px 1px 1px;
+
+    box-shadow:
+        inset -2px 0
+        rgba(255, 255, 255, 0.15);
+}
+
+
+.livro-1 {
+    height: 51px;
+    background: #c4b5fd;
+}
+
+
+.livro-2 {
+    height: 65px;
+    width: 18px;
+    background: #f5d0fe;
+}
+
+
+.livro-3 {
+    height: 58px;
+    background: #ddd6fe;
+}
+
+
+.livro-4 {
+    height: 70px;
+    width: 19px;
+    background: #a78bfa;
+}
+
+
+.livro-5 {
+    height: 47px;
+    background: #fbcfe8;
+}
+
+
+.livro-6 {
+    height: 63px;
+    width: 17px;
+    background: #c084fc;
+}
+
+
+.livro-7 {
+    height: 55px;
+    background: #e9d5ff;
+
+    transform:
+        rotate(-7deg);
+
+    transform-origin:
+        bottom;
+}
+
+
+.livro-8 {
+    height: 67px;
+    width: 19px;
+    background: #f0abfc;
+}
+
+
+/* ========================================
+   DETALHES DOS CARDS
+======================================== */
+
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 4px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            #7c3aed,
+            #c084fc
+        );
+}
+
+
+.grafico-card {
+    position: relative;
+    overflow: hidden;
+}
+
+
+.grafico-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 20px;
+    right: 20px;
+
+    height: 3px;
+
+    border-radius:
+        0 0 4px 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #c084fc,
+            transparent
+        );
+}
+
+
+/* ========================================
+   EFEITO DE PAPEL NAS TABELAS
+======================================== */
+
+.tabela-container {
+    position: relative;
+}
+
+
+.tabela-container::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(91, 33, 182, 0.012),
+            rgba(91, 33, 182, 0.012) 1px,
+            transparent 1px,
+            transparent 5px
+        );
+}
+
+
+/* ========================================
+   RESPONSIVIDADE DO HERO
+======================================== */
+
+@media (max-width: 700px) {
+
+    .hero-conteudo {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .estante-decorativa {
+        align-self: flex-end;
+    }
+
+    .hero-livraria::after {
+        font-size: 45px;
+    }
+
+}
