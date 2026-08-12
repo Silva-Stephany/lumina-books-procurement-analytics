@@ -1,4 +1,7 @@
-fornecedor_id;fornecedor;prazo_medio;avaliacao
-F001;Aurora Distribuidora;11;4.7
-F002;Nexo Editorial;8;4.5
-F003;Página Sul Atacado;14;4.3
+fornecedor_id,fornecedor,prazo_medio,avaliacao
+F001,Aurora Distribuidora,11,4.7
+F002,Nexo Editorial,8,4.5
+F003,Página Sul Atacado,14,4.3
+F004,Horizonte Livros,9,4.6
+F005,Vertex Distribuição,17,4.1
+F006,Saber & Cia,7,4.8
