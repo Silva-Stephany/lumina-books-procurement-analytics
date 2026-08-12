@@ -26,11 +26,883 @@
         <h1>🧠 Recomendações de Compras</h1>
 
         <p>
-            Sugestões baseadas em estoque,
-            demanda, fornecedores e histórico de compras.
+            Sugestões automáticas baseadas em demanda,
+            estoque, giro e necessidade de reposição.
         </p>
 
+        <!-- KPIs -->
+
+        <section class="cards">
+
+            <div class="card">
+                <span>Títulos com reposição recomendada</span>
+                <strong id="kpiReposicao">0</strong>
+            </div>
+
+            <div class="card">
+                <span>Prioridade alta</span>
+                <strong id="kpiAlta">0</strong>
+            </div>
+
+            <div class="card">
+                <span>Unidades sugeridas</span>
+                <strong id="kpiQuantidade">0</strong>
+            </div>
+
+            <div class="card">
+                <span>Maior prioridade</span>
+                <strong id="kpiPrincipal">-</strong>
+            </div>
+
+        </section>
+
+
+        <!-- CARDS DE INSIGHTS -->
+
+        <section class="graficos">
+
+            <div class="grafico-card">
+
+                <h2>📦 Estoque crítico</h2>
+
+                <p id="insightEstoque">
+                    Carregando análise...
+                </p>
+
+            </div>
+
+
+            <div class="grafico-card">
+
+                <h2>📈 Demanda recente</h2>
+
+                <p id="insightDemanda">
+                    Carregando análise...
+                </p>
+
+            </div>
+
+
+            <div class="grafico-card">
+
+                <h2>🏢 Fornecedor dominante</h2>
+
+                <p id="insightFornecedor">
+                    Carregando análise...
+                </p>
+
+            </div>
+
+
+            <div class="grafico-card">
+
+                <h2>⚡ Oportunidade de ação</h2>
+
+                <p id="insightAcao">
+                    Carregando análise...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- GRÁFICO -->
+
+        <section class="graficos">
+
+            <div class="grafico-card">
+
+                <h2>Quantidade sugerida por título</h2>
+
+                <canvas id="graficoReposicao"></canvas>
+
+            </div>
+
+
+            <div class="grafico-card">
+
+                <h2>Prioridade de compra</h2>
+
+                <canvas id="graficoPrioridade"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- TABELA -->
+
+        <section class="tabela-container">
+
+            <h2>Plano de ação de compras</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Livro</th>
+                        <th>Gênero</th>
+                        <th>Estoque atual</th>
+                        <th>Estoque mínimo</th>
+                        <th>Venda média 3 meses</th>
+                        <th>Compra sugerida</th>
+                        <th>Prioridade</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="tabelaRecomendacoes"></tbody>
+
+            </table>
+
+        </section>
+
     </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/shared.js"></script>
+
+
+    <script>
+
+        let livros = [];
+        let vendas = [];
+        let compras = [];
+
+        let recomendacoes = [];
+
+        let graficoReposicao;
+        let graficoPrioridade;
+
+
+        async function iniciarDashboard() {
+
+            livros =
+                await carregarCSV(
+                    "data/livros.csv"
+                );
+
+            vendas =
+                await carregarCSV(
+                    "data/vendas.csv"
+                );
+
+            compras =
+                await carregarCSV(
+                    "data/compras.csv"
+                );
+
+            gerarRecomendacoes();
+
+            atualizarKPIs();
+
+            atualizarInsights();
+
+            atualizarGraficos();
+
+            atualizarTabela();
+
+        }
+
+
+        function gerarRecomendacoes() {
+
+            recomendacoes =
+                livros.map(livro => {
+
+
+                    const vendasLivro =
+                        vendas.filter(
+                            item =>
+                                item.livro_id ===
+                                livro.livro_id
+                        );
+
+
+                    const comprasLivro =
+                        compras.filter(
+                            item =>
+                                item.livro_id ===
+                                livro.livro_id
+                        );
+
+
+                    const totalVendido =
+                        somar(
+                            vendasLivro,
+                            "quantidade"
+                        );
+
+
+                    const totalComprado =
+                        somar(
+                            comprasLivro,
+                            "quantidade"
+                        );
+
+
+                    const estoqueInicial =
+                        Number(
+                            livro.estoque_inicial || 0
+                        );
+
+
+                    const estoqueMinimo =
+                        Number(
+                            livro.estoque_minimo || 0
+                        );
+
+
+                    let estoqueAtual =
+                        estoqueInicial
+                        +
+                        totalComprado
+                        -
+                        totalVendido;
+
+
+                    if (
+                        estoqueAtual < 0
+                    ) {
+
+                        estoqueAtual = 0;
+
+                    }
+
+
+                    const vendasRecentes =
+                        [...vendasLivro]
+                            .sort(
+                                (a, b) =>
+                                    Number(
+                                        b.mes_num
+                                    )
+                                    -
+                                    Number(
+                                        a.mes_num
+                                    )
+                            )
+                            .slice(
+                                0,
+                                3
+                            );
+
+
+                    const media3Meses =
+                        vendasRecentes.length > 0
+                        ?
+                        somar(
+                            vendasRecentes,
+                            "quantidade"
+                        )
+                        /
+                        vendasRecentes.length
+                        :
+                        0;
+
+
+                    const estoqueAlvo =
+                        Math.ceil(
+                            media3Meses * 2.2
+                        );
+
+
+                    let quantidadeSugerida =
+                        Math.ceil(
+                            estoqueAlvo -
+                            estoqueAtual
+                        );
+
+
+                    if (
+                        quantidadeSugerida < 0
+                    ) {
+
+                        quantidadeSugerida = 0;
+
+                    }
+
+
+                    let prioridade =
+                        "Baixa";
+
+
+                    if (
+                        estoqueAtual <=
+                        estoqueMinimo
+                    ) {
+
+                        prioridade =
+                            "Alta";
+
+                    }
+
+                    else if (
+                        estoqueAtual <=
+                        estoqueMinimo * 1.5
+                        ||
+                        quantidadeSugerida > 0
+                    ) {
+
+                        prioridade =
+                            "Média";
+
+                    }
+
+
+                    return {
+
+                        titulo:
+                            livro.titulo,
+
+                        genero:
+                            livro.genero,
+
+                        estoqueAtual:
+                            estoqueAtual,
+
+                        estoqueMinimo:
+                            estoqueMinimo,
+
+                        media3Meses:
+                            media3Meses,
+
+                        quantidadeSugerida:
+                            quantidadeSugerida,
+
+                        prioridade:
+                            prioridade
+
+                    };
+
+                });
+
+        }
+
+
+        function atualizarKPIs() {
+
+            const comReposicao =
+                recomendacoes.filter(
+                    item =>
+                        item.quantidadeSugerida > 0
+                );
+
+
+            const alta =
+                recomendacoes.filter(
+                    item =>
+                        item.prioridade ===
+                        "Alta"
+                );
+
+
+            const totalSugerido =
+                comReposicao.reduce(
+                    (total, item) =>
+                        total +
+                        item.quantidadeSugerida,
+                    0
+                );
+
+
+            const ranking =
+                [...recomendacoes]
+                    .sort(
+                        (a, b) =>
+                            b.quantidadeSugerida -
+                            a.quantidadeSugerida
+                    );
+
+
+            document
+                .getElementById(
+                    "kpiReposicao"
+                )
+                .textContent =
+                    comReposicao.length;
+
+
+            document
+                .getElementById(
+                    "kpiAlta"
+                )
+                .textContent =
+                    alta.length;
+
+
+            document
+                .getElementById(
+                    "kpiQuantidade"
+                )
+                .textContent =
+                    formatarNumero(
+                        totalSugerido
+                    );
+
+
+            document
+                .getElementById(
+                    "kpiPrincipal"
+                )
+                .textContent =
+                    ranking.length > 0
+                    ?
+                    ranking[0].titulo
+                    :
+                    "-";
+
+        }
+
+
+        function atualizarInsights() {
+
+            const criticos =
+                recomendacoes.filter(
+                    item =>
+                        item.prioridade ===
+                        "Alta"
+                );
+
+
+            document
+                .getElementById(
+                    "insightEstoque"
+                )
+                .textContent =
+
+                    criticos.length > 0
+
+                    ?
+
+                    `${criticos.length} títulos estão abaixo ou no estoque mínimo e precisam de atenção imediata.`
+
+                    :
+
+                    "Nenhum título está abaixo do estoque mínimo.";
+
+
+
+            const maiorDemanda =
+                [...recomendacoes]
+                    .sort(
+                        (a, b) =>
+                            b.media3Meses -
+                            a.media3Meses
+                    )[0];
+
+
+            document
+                .getElementById(
+                    "insightDemanda"
+                )
+                .textContent =
+
+                    maiorDemanda
+
+                    ?
+
+                    `${maiorDemanda.titulo} apresenta a maior média de vendas recentes, com aproximadamente ${maiorDemanda.media3Meses.toFixed(0)} unidades por mês.`
+
+                    :
+
+                    "Não há dados suficientes de demanda.";
+
+
+
+            const gastoFornecedor =
+                agruparESomar(
+                    compras,
+                    "fornecedor",
+                    "valor_compra"
+                );
+
+
+            const rankingFornecedor =
+                Object.entries(
+                    gastoFornecedor
+                )
+                .sort(
+                    (a, b) =>
+                        b[1] - a[1]
+                );
+
+
+            const gastoTotal =
+                somar(
+                    compras,
+                    "valor_compra"
+                );
+
+
+            if (
+                rankingFornecedor.length > 0
+            ) {
+
+                const fornecedor =
+                    rankingFornecedor[0];
+
+
+                const percentual =
+                    gastoTotal > 0
+                    ?
+                    fornecedor[1] /
+                    gastoTotal *
+                    100
+                    :
+                    0;
+
+
+                document
+                    .getElementById(
+                        "insightFornecedor"
+                    )
+                    .textContent =
+
+                        `${fornecedor[0]} representa aproximadamente ${percentual.toFixed(1)}% do investimento em compras.`;
+
+            }
+
+
+            const principal =
+                [...recomendacoes]
+                    .sort(
+                        (a, b) =>
+                            b.quantidadeSugerida -
+                            a.quantidadeSugerida
+                    )[0];
+
+
+            document
+                .getElementById(
+                    "insightAcao"
+                )
+                .textContent =
+
+                    principal &&
+                    principal.quantidadeSugerida > 0
+
+                    ?
+
+                    `A maior oportunidade de reposição está em ${principal.titulo}, com sugestão de compra de ${principal.quantidadeSugerida} unidades.`
+
+                    :
+
+                    "O estoque atual atende à demanda estimada.";
+
+        }
+
+
+        function atualizarGraficos() {
+
+            const dadosReposicao =
+                recomendacoes
+                    .filter(
+                        item =>
+                            item.quantidadeSugerida > 0
+                    )
+                    .sort(
+                        (a, b) =>
+                            b.quantidadeSugerida -
+                            a.quantidadeSugerida
+                    )
+                    .slice(
+                        0,
+                        12
+                    );
+
+
+            if (
+                graficoReposicao
+            ) {
+
+                graficoReposicao.destroy();
+
+            }
+
+
+            graficoReposicao =
+                new Chart(
+
+                    document.getElementById(
+                        "graficoReposicao"
+                    ),
+
+                    {
+
+                        type:
+                            "bar",
+
+                        data: {
+
+                            labels:
+                                dadosReposicao.map(
+                                    item =>
+                                        item.titulo
+                                ),
+
+                            datasets: [
+
+                                {
+
+                                    label:
+                                        "Compra sugerida",
+
+                                    data:
+                                        dadosReposicao.map(
+                                            item =>
+                                                item.quantidadeSugerida
+                                        )
+
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true,
+
+                            indexAxis:
+                                "y"
+
+                        }
+
+                    }
+
+                );
+
+
+
+            const prioridades = {
+
+                "Alta": 0,
+                "Média": 0,
+                "Baixa": 0
+
+            };
+
+
+            recomendacoes.forEach(
+                item => {
+
+                    prioridades[
+                        item.prioridade
+                    ]++;
+
+                }
+            );
+
+
+            if (
+                graficoPrioridade
+            ) {
+
+                graficoPrioridade.destroy();
+
+            }
+
+
+            graficoPrioridade =
+                new Chart(
+
+                    document.getElementById(
+                        "graficoPrioridade"
+                    ),
+
+                    {
+
+                        type:
+                            "doughnut",
+
+                        data: {
+
+                            labels:
+                                Object.keys(
+                                    prioridades
+                                ),
+
+                            datasets: [
+
+                                {
+
+                                    data:
+                                        Object.values(
+                                            prioridades
+                                        )
+
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true
+
+                        }
+
+                    }
+
+                );
+
+        }
+
+
+        function atualizarTabela() {
+
+            const corpo =
+                document.getElementById(
+                    "tabelaRecomendacoes"
+                );
+
+
+            corpo.innerHTML = "";
+
+
+            const ordem = {
+
+                "Alta": 1,
+                "Média": 2,
+                "Baixa": 3
+
+            };
+
+
+            [...recomendacoes]
+                .sort(
+                    (a, b) => {
+
+                        if (
+                            ordem[a.prioridade] !==
+                            ordem[b.prioridade]
+                        ) {
+
+                            return (
+                                ordem[a.prioridade]
+                                -
+                                ordem[b.prioridade]
+                            );
+
+                        }
+
+
+                        return (
+                            b.quantidadeSugerida
+                            -
+                            a.quantidadeSugerida
+                        );
+
+                    }
+                )
+                .forEach(
+                    item => {
+
+
+                        const linha =
+                            document.createElement(
+                                "tr"
+                            );
+
+
+                        linha.innerHTML = `
+
+                            <td>
+                                ${item.titulo}
+                            </td>
+
+                            <td>
+                                ${item.genero}
+                            </td>
+
+                            <td>
+                                ${formatarNumero(
+                                    item.estoqueAtual
+                                )}
+                            </td>
+
+                            <td>
+                                ${formatarNumero(
+                                    item.estoqueMinimo
+                                )}
+                            </td>
+
+                            <td>
+                                ${item.media3Meses
+                                    .toFixed(1)}
+                            </td>
+
+                            <td>
+                                ${formatarNumero(
+                                    item.quantidadeSugerida
+                                )}
+                            </td>
+
+                            <td>
+
+                                <span class="
+                                    status-badge
+                                    ${classePrioridade(
+                                        item.prioridade
+                                    )}
+                                ">
+
+                                    ${item.prioridade}
+
+                                </span>
+
+                            </td>
+
+                        `;
+
+
+                        corpo.appendChild(
+                            linha
+                        );
+
+                    }
+                );
+
+        }
+
+
+        function classePrioridade(
+            prioridade
+        ) {
+
+            if (
+                prioridade === "Alta"
+            ) {
+
+                return "status-critico";
+
+            }
+
+
+            if (
+                prioridade === "Média"
+            ) {
+
+                return "status-atencao";
+
+            }
+
+
+            return "status-saudavel";
+
+        }
+
+
+        iniciarDashboard();
+
+    </script>
 
 </body>
 
