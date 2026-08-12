@@ -19,15 +19,13 @@
 
 body {
     margin: 0;
-
     font-family: var(--fonte-texto);
-
     color: var(--texto);
 
     background:
         linear-gradient(
-            rgba(248, 245, 255, 0.92),
-            rgba(243, 239, 255, 0.92)
+            rgba(248, 245, 255, 0.88),
+            rgba(243, 239, 255, 0.88)
         ),
         url("../images/fundo-livraria.png");
 
