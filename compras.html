@@ -1,1 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Compras | Lumina Books</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">Visão Geral</a>
+        <a href="catalogo.html">Livros</a>
+        <a href="compras.html">Compras</a>
+        <a href="estoque.html">Estoque</a>
+        <a href="fornecedores.html">Fornecedores</a>
+        <a href="recomendacoes.html">Recomendações</a>
+    </nav>
+
+    <main>
+
+        <h1>🧾 Análise de Compras</h1>
+
+        <p>
+            Indicadores de investimento, volume comprado,
+            custos e participação dos fornecedores.
+        </p>
+
+        <!-- FILTROS -->
+
+        <section class="filtros">
+
+            <div>
+                <label for="filtroMes">Mês</label>
+
+                <select id="filtroMes">
+                    <option value="Todos">Todos</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="filtroGenero">Gênero</label>
+
+                <select id="filtroGenero">
+                    <option value="Todos">Todos</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="filtroFornecedor">Fornecedor</label>
+
+                <select id="filtroFornecedor">
+                    <option value="Todos">Todos</option>
+                </select>
+            </div>
+
+        </section>
+
+        <!-- KPIs -->
+
+        <section class="cards">
+
+            <div class="card">
+                <span>Total investido</span>
+                <strong id="kpiInvestimento">R$ 0</strong>
+            </div>
+
+            <div class="card">
+                <span>Unidades compradas</span>
+                <strong id="kpiQuantidade">0</strong>
+            </div>
+
+            <div class="card">
+                <span>Custo médio unitário</span>
+                <strong id="kpiCustoMedio">R$ 0</strong>
+            </div>
+
+            <div class="card">
+                <span>Fornecedor líder</span>
+                <strong id="kpiFornecedor">-</strong>
+            </div>
+
+        </section>
+
+        <!-- GRÁFICOS -->
+
+        <section class="graficos">
+
+            <div class="grafico-card">
+                <h2>Evolução mensal das compras</h2>
+                <canvas id="graficoMensal"></canvas>
+            </div>
+
+            <div class="grafico-card">
+                <h2>Gasto por fornecedor</h2>
+                <canvas id="graficoFornecedor"></canvas>
+            </div>
+
+            <div class="grafico-card">
+                <h2>Curva ABC por título</h2>
+                <canvas id="graficoABC"></canvas>
+            </div>
+
+            <div class="grafico-card">
+                <h2>Custo médio por gênero</h2>
+                <canvas id="graficoGenero"></canvas>
+            </div>
+
+        </section>
+
+        <!-- TABELA -->
+
+        <section class="tabela-container">
+
+            <h2>Detalhamento das compras</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Mês</th>
+                        <th>Livro</th>
+                        <th>Gênero</th>
+                        <th>Fornecedor</th>
+                        <th>Quantidade</th>
+                        <th>Custo unitário</th>
+                        <th>Valor da compra</th>
+                        <th>Prazo</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelaCompras"></tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/shared.js"></script>
+
+    <script>
+
+        let compras = [];
+
+        let graficoMensal;
+        let graficoFornecedor;
+        let graficoABC;
+        let graficoGenero;
+
+        async function iniciarDashboard() {
+
+            compras = await carregarCSV("data/compras.csv");
+
+            prepararFiltros();
+
+            atualizarDashboard();
+        }
+
+        function prepararFiltros() {
+
+            const meses = [
+                ...new Set(
+                    compras.map(item => item.mes)
+                )
+            ];
+
+            const generos = [
+                ...new Set(
+                    compras.map(item => item.genero)
+                )
+            ].sort();
+
+            const fornecedores = [
+                ...new Set(
+                    compras.map(item => item.fornecedor)
+                )
+            ].sort();
+
+            meses.forEach(mes => {
+                adicionarOpcao("filtroMes", mes);
+            });
+
+            generos.forEach(genero => {
+                adicionarOpcao("filtroGenero", genero);
+            });
+
+            fornecedores.forEach(fornecedor => {
+                adicionarOpcao("filtroFornecedor", fornecedor);
+            });
+        }
+
+        function adicionarOpcao(id, valor) {
+
+            const opcao = document.createElement("option");
+
+            opcao.value = valor;
+            opcao.textContent = valor;
+
+            document
+                .getElementById(id)
+                .appendChild(opcao);
+        }
+
+        function obterComprasFiltradas() {
+
+            const mes =
+                document.getElementById("filtroMes").value;
+
+            const genero =
+                document.getElementById("filtroGenero").value;
+
+            const fornecedor =
+                document.getElementById("filtroFornecedor").value;
+
+            return compras.filter(item => {
+
+                const filtroMes =
+                    mes === "Todos" ||
+                    item.mes === mes;
+
+                const filtroGenero =
+                    genero === "Todos" ||
+                    item.genero === genero;
+
+                const filtroFornecedor =
+                    fornecedor === "Todos" ||
+                    item.fornecedor === fornecedor;
+
+                return (
+                    filtroMes &&
+                    filtroGenero &&
+                    filtroFornecedor
+                );
+            });
+        }
+
+        function atualizarDashboard() {
+
+            const dados = obterComprasFiltradas();
+
+            atualizarKPIs(dados);
+            atualizarGraficos(dados);
+            atualizarTabela(dados);
+        }
+
+        function atualizarKPIs(dados) {
+
+            const investimento =
+                somar(dados, "valor_compra");
+
+            const quantidade =
+                somar(dados, "quantidade");
+
+            const custoMedio =
+                quantidade > 0
+                ? investimento / quantidade
+                : 0;
+
+            const gastoFornecedor =
+                agruparESomar(
+                    dados,
+                    "fornecedor",
+                    "valor_compra"
+                );
+
+            let fornecedorLider = "-";
+            let maiorValor = 0;
+
+            Object.entries(
+                gastoFornecedor
+            ).forEach(
+                ([fornecedor, valor]) => {
+
+                    if (valor > maiorValor) {
+
+                        maiorValor = valor;
+                        fornecedorLider = fornecedor;
+                    }
+                }
+            );
+
+            document
+                .getElementById("kpiInvestimento")
+                .textContent =
+                formatarMoeda(investimento);
+
+            document
+                .getElementById("kpiQuantidade")
+                .textContent =
+                formatarNumero(quantidade);
+
+            document
+                .getElementById("kpiCustoMedio")
+                .textContent =
+                formatarMoeda(custoMedio);
+
+            document
+                .getElementById("kpiFornecedor")
+                .textContent =
+                fornecedorLider;
+        }
+
+        function atualizarGraficos(dados) {
+
+            atualizarGraficoMensal(dados);
+            atualizarGraficoFornecedor(dados);
+            atualizarGraficoABC(dados);
+            atualizarGraficoGenero(dados);
+        }
+
+        function atualizarGraficoMensal(dados) {
+
+            const meses = [
+                "Jan",
+                "Fev",
+                "Mar",
+                "Abr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Set",
+                "Out",
+                "Nov",
+                "Dez"
+            ];
+
+            const valores = meses.map(mes => {
+
+                return dados
+                    .filter(item => item.mes === mes)
+                    .reduce(
+                        (total, item) =>
+                            total +
+                            Number(item.valor_compra || 0),
+                        0
+                    );
+            });
+
+            if (graficoMensal) {
+                graficoMensal.destroy();
+            }
+
+            graficoMensal =
+                new Chart(
+                    document.getElementById(
+                        "graficoMensal"
+                    ),
+                    {
+                        type: "line",
+
+                        data: {
+                            labels: meses,
+
+                            datasets: [
+                                {
+                                    label:
+                                        "Valor das compras",
+
+                                    data: valores,
+
+                                    tension: 0.3
+                                }
+                            ]
+                        },
+
+                        options: {
+                            responsive: true
+                        }
+                    }
+                );
+        }
+
+        function atualizarGraficoFornecedor(dados) {
+
+            const resultado =
+                agruparESomar(
+                    dados,
+                    "fornecedor",
+                    "valor_compra"
+                );
+
+            const ranking =
+                Object.entries(resultado)
+                    .sort(
+                        (a, b) =>
+                            b[1] - a[1]
+                    );
+
+            if (graficoFornecedor) {
+                graficoFornecedor.destroy();
+            }
+
+            graficoFornecedor =
+                new Chart(
+                    document.getElementById(
+                        "graficoFornecedor"
+                    ),
+                    {
+                        type: "bar",
+
+                        data: {
+                            labels:
+                                ranking.map(
+                                    item => item[0]
+                                ),
+
+                            datasets: [
+                                {
+                                    label:
+                                        "Gasto total",
+
+                                    data:
+                                        ranking.map(
+                                            item => item[1]
+                                        )
+                                }
+                            ]
+                        },
+
+                        options: {
+                            responsive: true,
+                            indexAxis: "y"
+                        }
+                    }
+                );
+        }
+
+        function atualizarGraficoABC(dados) {
+
+            const gastoPorLivro =
+                agruparESomar(
+                    dados,
+                    "titulo",
+                    "valor_compra"
+                );
+
+            const ranking =
+                Object.entries(gastoPorLivro)
+                    .sort(
+                        (a, b) =>
+                            b[1] - a[1]
+                    );
+
+            const total =
+                ranking.reduce(
+                    (soma, item) =>
+                        soma + item[1],
+                    0
+                );
+
+            let acumulado = 0;
+
+            const valoresPercentuais =
+                ranking.map(item => {
+
+                    acumulado += item[1];
+
+                    return total > 0
+                        ? acumulado /
+                          total *
+                          100
+                        : 0;
+                });
+
+            if (graficoABC) {
+                graficoABC.destroy();
+            }
+
+            graficoABC =
+                new Chart(
+                    document.getElementById(
+                        "graficoABC"
+                    ),
+                    {
+                        data: {
+
+                            labels:
+                                ranking.map(
+                                    item => item[0]
+                                ),
+
+                            datasets: [
+
+                                {
+                                    type: "bar",
+
+                                    label:
+                                        "Valor comprado",
+
+                                    data:
+                                        ranking.map(
+                                            item => item[1]
+                                        )
+                                },
+
+                                {
+                                    type: "line",
+
+                                    label:
+                                        "% acumulado",
+
+                                    data:
+                                        valoresPercentuais,
+
+                                    yAxisID:
+                                        "yPercentual"
+                                }
+                            ]
+                        },
+
+                        options: {
+
+                            responsive: true,
+
+                            scales: {
+
+                                yPercentual: {
+
+                                    position: "right",
+
+                                    beginAtZero: true,
+
+                                    max: 100,
+
+                                    grid: {
+                                        drawOnChartArea:
+                                            false
+                                    },
+
+                                    ticks: {
+                                        callback:
+                                            valor =>
+                                                valor +
+                                                "%"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                );
+        }
+
+        function atualizarGraficoGenero(dados) {
+
+            const grupos = {};
+
+            dados.forEach(item => {
+
+                const genero = item.genero;
+
+                if (!grupos[genero]) {
+
+                    grupos[genero] = {
+                        valor: 0,
+                        quantidade: 0
+                    };
+                }
+
+                grupos[genero].valor +=
+                    Number(
+                        item.valor_compra ||
+                        0
+                    );
+
+                grupos[genero].quantidade +=
+                    Number(
+                        item.quantidade ||
+                        0
+                    );
+            });
+
+            const generos =
+                Object.keys(grupos);
+
+            const custos =
+                generos.map(genero => {
+
+                    const grupo =
+                        grupos[genero];
+
+                    return grupo.quantidade > 0
+                        ? grupo.valor /
+                          grupo.quantidade
+                        : 0;
+                });
+
+            if (graficoGenero) {
+                graficoGenero.destroy();
+            }
+
+            graficoGenero =
+                new Chart(
+                    document.getElementById(
+                        "graficoGenero"
+                    ),
+                    {
+                        type: "bar",
+
+                        data: {
+                            labels: generos,
+
+                            datasets: [
+                                {
+                                    label:
+                                        "Custo médio",
+
+                                    data: custos
+                                }
+                            ]
+                        },
+
+                        options: {
+                            responsive: true
+                        }
+                    }
+                );
+        }
+
+        function atualizarTabela(dados) {
+
+            const corpo =
+                document
+                    .getElementById(
+                        "tabelaCompras"
+                    );
+
+            corpo.innerHTML = "";
+
+            dados.forEach(item => {
+
+                const linha =
+                    document
+                        .createElement("tr");
+
+                linha.innerHTML = `
+
+                    <td>
+                        ${item.mes}
+                    </td>
+
+                    <td>
+                        ${item.titulo}
+                    </td>
+
+                    <td>
+                        ${item.genero}
+                    </td>
+
+                    <td>
+                        ${item.fornecedor}
+                    </td>
+
+                    <td>
+                        ${formatarNumero(
+                            item.quantidade
+                        )}
+                    </td>
+
+                    <td>
+                        ${formatarMoeda(
+                            item.custo_unitario
+                        )}
+                    </td>
+
+                    <td>
+                        ${formatarMoeda(
+                            item.valor_compra
+                        )}
+                    </td>
+
+                    <td>
+                        ${item.prazo_dias} dias
+                    </td>
+                `;
+
+                corpo.appendChild(linha);
+            });
+        }
+
+        document
+            .getElementById("filtroMes")
+            .addEventListener(
+                "change",
+                atualizarDashboard
+            );
+
+        document
+            .getElementById("filtroGenero")
+            .addEventListener(
+                "change",
+                atualizarDashboard
+            );
+
+        document
+            .getElementById("filtroFornecedor")
+            .addEventListener(
+                "change",
+                atualizarDashboard
+            );
+
+        iniciarDashboard();
+
+    </script>
+
+</body>
+
+</html>
