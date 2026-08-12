@@ -1,1 +1,289 @@
-
+compra_id,mes,mes_num,fornecedor_id,fornecedor,livro_id,titulo,genero,quantidade,custo_unitario,valor_compra,prazo_dias
+C0001,Jan,1,F001,Aurora Distribuidora,L001,O Reino de Âmbar,Fantasia,64,36.17,2314.88,11
+C0002,Fev,2,F001,Aurora Distribuidora,L001,O Reino de Âmbar,Fantasia,70,36.43,2550.10,9
+C0003,Mar,3,F001,Aurora Distribuidora,L001,O Reino de Âmbar,Fantasia,82,36.47,2990.54,12
+C0004,Abr,4,F001,Aurora Distribuidora,L001,O Reino de Âmbar,Fantasia,68,36.55,2485.40,10
+C0005,Mai,5,F001,Aurora Distribuidora,L001,O Reino de Âmbar,Fantasia,76,37.01,2812.76,9
+C0006,Jun,6,F001,Aurora Distribuidora,L001,O Reino de Âmbar,Fantasia,88,36.93,3249.84,13
+C0007,Jul,7,F001,Aurora Distribuidora,L001,O Reino de Âmbar,Fantasia,80,37.07,2965.60,13
+C0008,Ago,8,F001,Aurora Distribuidora,L001,O Reino de Âmbar,Fantasia,80,37.61,3008.80,9
+C0009,Set,9,F001,Aurora Distribuidora,L001,O Reino de Âmbar,Fantasia,79,37.66,2975.14,11
+C0010,Out,10,F001,Aurora Distribuidora,L001,O Reino de Âmbar,Fantasia,85,37.41,3179.85,11
+C0011,Nov,11,F001,Aurora Distribuidora,L001,O Reino de Âmbar,Fantasia,86,37.49,3224.14,9
+C0012,Dez,12,F001,Aurora Distribuidora,L001,O Reino de Âmbar,Fantasia,102,38.15,3891.30,13
+C0013,Jan,1,F002,Nexo Editorial,L002,A Torre de Vidro,Fantasia,76,34.41,2615.16,9
+C0014,Fev,2,F002,Nexo Editorial,L002,A Torre de Vidro,Fantasia,86,34.06,2929.16,9
+C0015,Mar,3,F002,Nexo Editorial,L002,A Torre de Vidro,Fantasia,74,34.48,2551.52,10
+C0016,Abr,4,F002,Nexo Editorial,L002,A Torre de Vidro,Fantasia,85,34.61,2941.85,6
+C0017,Mai,5,F002,Nexo Editorial,L002,A Torre de Vidro,Fantasia,77,34.79,2678.83,8
+C0018,Jun,6,F002,Nexo Editorial,L002,A Torre de Vidro,Fantasia,80,35.05,2804.00,6
+C0019,Jul,7,F002,Nexo Editorial,L002,A Torre de Vidro,Fantasia,85,34.76,2954.60,8
+C0020,Ago,8,F002,Nexo Editorial,L002,A Torre de Vidro,Fantasia,84,34.95,2935.80,7
+C0021,Set,9,F002,Nexo Editorial,L002,A Torre de Vidro,Fantasia,89,35.30,3141.70,6
+C0022,Out,10,F002,Nexo Editorial,L002,A Torre de Vidro,Fantasia,89,35.30,3141.70,7
+C0023,Nov,11,F002,Nexo Editorial,L002,A Torre de Vidro,Fantasia,96,35.37,3395.52,8
+C0024,Dez,12,F002,Nexo Editorial,L002,A Torre de Vidro,Fantasia,117,35.32,4132.44,8
+C0025,Jan,1,F003,Página Sul Atacado,L003,Crônicas do Norte,Fantasia,75,38.91,2918.25,12
+C0026,Fev,2,F003,Página Sul Atacado,L003,Crônicas do Norte,Fantasia,86,39.17,3368.62,12
+C0027,Mar,3,F003,Página Sul Atacado,L003,Crônicas do Norte,Fantasia,84,39.66,3331.44,16
+C0028,Abr,4,F003,Página Sul Atacado,L003,Crônicas do Norte,Fantasia,91,39.31,3577.21,15
+C0029,Mai,5,F003,Página Sul Atacado,L003,Crônicas do Norte,Fantasia,95,39.92,3792.40,15
+C0030,Jun,6,F003,Página Sul Atacado,L003,Crônicas do Norte,Fantasia,89,39.62,3526.18,13
+C0031,Jul,7,F003,Página Sul Atacado,L003,Crônicas do Norte,Fantasia,97,39.95,3875.15,16
+C0032,Ago,8,F003,Página Sul Atacado,L003,Crônicas do Norte,Fantasia,100,40.34,4034.00,15
+C0033,Set,9,F003,Página Sul Atacado,L003,Crônicas do Norte,Fantasia,99,40.00,3960.00,13
+C0034,Out,10,F003,Página Sul Atacado,L003,Crônicas do Norte,Fantasia,108,40.33,4355.64,12
+C0035,Nov,11,F003,Página Sul Atacado,L003,Crônicas do Norte,Fantasia,102,40.23,4103.46,13
+C0036,Dez,12,F003,Página Sul Atacado,L003,Crônicas do Norte,Fantasia,121,40.67,4921.07,15
+C0037,Jan,1,F004,Horizonte Livros,L004,Jardim de Inverno,Romance,92,24.97,2297.24,10
+C0038,Fev,2,F004,Horizonte Livros,L004,Jardim de Inverno,Romance,98,24.81,2431.38,11
+C0039,Mar,3,F004,Horizonte Livros,L004,Jardim de Inverno,Romance,85,25.20,2142.00,7
+C0040,Abr,4,F004,Horizonte Livros,L004,Jardim de Inverno,Romance,105,25.34,2660.70,9
+C0041,Mai,5,F004,Horizonte Livros,L004,Jardim de Inverno,Romance,93,25.10,2334.30,8
+C0042,Jun,6,F004,Horizonte Livros,L004,Jardim de Inverno,Romance,106,24.99,2648.94,9
+C0043,Jul,7,F004,Horizonte Livros,L004,Jardim de Inverno,Romance,103,25.61,2637.83,11
+C0044,Ago,8,F004,Horizonte Livros,L004,Jardim de Inverno,Romance,97,25.77,2499.69,9
+C0045,Set,9,F004,Horizonte Livros,L004,Jardim de Inverno,Romance,112,25.67,2875.04,8
+C0046,Out,10,F004,Horizonte Livros,L004,Jardim de Inverno,Romance,111,25.87,2871.57,11
+C0047,Nov,11,F004,Horizonte Livros,L004,Jardim de Inverno,Romance,124,26.06,3231.44,11
+C0048,Dez,12,F004,Horizonte Livros,L004,Jardim de Inverno,Romance,127,25.85,3282.95,7
+C0049,Jan,1,F005,Vertex Distribuição,L005,Cartas para Lisboa,Romance,98,28.07,2750.86,17
+C0050,Fev,2,F005,Vertex Distribuição,L005,Cartas para Lisboa,Romance,96,27.59,2648.64,19
+C0051,Mar,3,F005,Vertex Distribuição,L005,Cartas para Lisboa,Romance,94,27.70,2603.80,18
+C0052,Abr,4,F005,Vertex Distribuição,L005,Cartas para Lisboa,Romance,97,28.43,2757.71,19
+C0053,Mai,5,F005,Vertex Distribuição,L005,Cartas para Lisboa,Romance,101,27.93,2820.93,18
+C0054,Jun,6,F005,Vertex Distribuição,L005,Cartas para Lisboa,Romance,116,28.05,3253.80,19
+C0055,Jul,7,F005,Vertex Distribuição,L005,Cartas para Lisboa,Romance,107,28.71,3071.97,19
+C0056,Ago,8,F005,Vertex Distribuição,L005,Cartas para Lisboa,Romance,107,28.63,3063.41,18
+C0057,Set,9,F005,Vertex Distribuição,L005,Cartas para Lisboa,Romance,114,28.54,3253.56,19
+C0058,Out,10,F005,Vertex Distribuição,L005,Cartas para Lisboa,Romance,122,28.41,3466.02,16
+C0059,Nov,11,F005,Vertex Distribuição,L005,Cartas para Lisboa,Romance,118,28.66,3381.88,19
+C0060,Dez,12,F005,Vertex Distribuição,L005,Cartas para Lisboa,Romance,143,28.68,4101.24,16
+C0061,Jan,1,F006,Saber & Cia,L006,Depois da Chuva,Romance,93,23.30,2166.90,5
+C0062,Fev,2,F006,Saber & Cia,L006,Depois da Chuva,Romance,102,23.38,2384.76,5
+C0063,Mar,3,F006,Saber & Cia,L006,Depois da Chuva,Romance,108,23.46,2533.68,6
+C0064,Abr,4,F006,Saber & Cia,L006,Depois da Chuva,Romance,110,23.97,2636.70,6
+C0065,Mai,5,F006,Saber & Cia,L006,Depois da Chuva,Romance,121,23.67,2864.07,9
+C0066,Jun,6,F006,Saber & Cia,L006,Depois da Chuva,Romance,124,23.99,2974.76,8
+C0067,Jul,7,F006,Saber & Cia,L006,Depois da Chuva,Romance,114,23.88,2722.32,5
+C0068,Ago,8,F006,Saber & Cia,L006,Depois da Chuva,Romance,121,24.08,2913.68,8
+C0069,Set,9,F006,Saber & Cia,L006,Depois da Chuva,Romance,125,24.52,3065.00,5
+C0070,Out,10,F006,Saber & Cia,L006,Depois da Chuva,Romance,118,24.04,2836.72,7
+C0071,Nov,11,F006,Saber & Cia,L006,Depois da Chuva,Romance,127,24.25,3079.75,6
+C0072,Dez,12,F006,Saber & Cia,L006,Depois da Chuva,Romance,152,24.47,3719.44,8
+C0073,Jan,1,F001,Aurora Distribuidora,L007,O Último Horizonte,Ficção Científica,104,31.74,3300.96,10
+C0074,Fev,2,F001,Aurora Distribuidora,L007,O Último Horizonte,Ficção Científica,103,31.97,3292.91,13
+C0075,Mar,3,F001,Aurora Distribuidora,L007,O Último Horizonte,Ficção Científica,108,31.81,3435.48,13
+C0076,Abr,4,F001,Aurora Distribuidora,L007,O Último Horizonte,Ficção Científica,109,32.56,3549.04,10
+C0077,Mai,5,F001,Aurora Distribuidora,L007,O Último Horizonte,Ficção Científica,116,32.28,3744.48,12
+C0078,Jun,6,F001,Aurora Distribuidora,L007,O Último Horizonte,Ficção Científica,119,32.71,3892.49,9
+C0079,Jul,7,F001,Aurora Distribuidora,L007,O Último Horizonte,Ficção Científica,112,32.49,3638.88,12
+C0080,Ago,8,F001,Aurora Distribuidora,L007,O Último Horizonte,Ficção Científica,124,32.98,4089.52,12
+C0081,Set,9,F001,Aurora Distribuidora,L007,O Último Horizonte,Ficção Científica,127,32.74,4157.98,13
+C0082,Out,10,F001,Aurora Distribuidora,L007,O Último Horizonte,Ficção Científica,138,32.66,4507.08,11
+C0083,Nov,11,F001,Aurora Distribuidora,L007,O Último Horizonte,Ficção Científica,138,33.34,4600.92,13
+C0084,Dez,12,F001,Aurora Distribuidora,L007,O Último Horizonte,Ficção Científica,161,32.82,5284.02,11
+C0085,Jan,1,F002,Nexo Editorial,L008,Atlas de Marte,Ficção Científica,57,35.09,2000.13,9
+C0086,Fev,2,F002,Nexo Editorial,L008,Atlas de Marte,Ficção Científica,73,35.82,2614.86,10
+C0087,Mar,3,F002,Nexo Editorial,L008,Atlas de Marte,Ficção Científica,64,35.34,2261.76,10
+C0088,Abr,4,F002,Nexo Editorial,L008,Atlas de Marte,Ficção Científica,64,36.02,2305.28,6
+C0089,Mai,5,F002,Nexo Editorial,L008,Atlas de Marte,Ficção Científica,65,36.02,2341.30,7
+C0090,Jun,6,F002,Nexo Editorial,L008,Atlas de Marte,Ficção Científica,76,35.75,2717.00,10
+C0091,Jul,7,F002,Nexo Editorial,L008,Atlas de Marte,Ficção Científica,68,36.20,2461.60,6
+C0092,Ago,8,F002,Nexo Editorial,L008,Atlas de Marte,Ficção Científica,68,36.21,2462.28,10
+C0093,Set,9,F002,Nexo Editorial,L008,Atlas de Marte,Ficção Científica,85,36.41,3094.85,8
+C0094,Out,10,F002,Nexo Editorial,L008,Atlas de Marte,Ficção Científica,76,36.63,2783.88,8
+C0095,Nov,11,F002,Nexo Editorial,L008,Atlas de Marte,Ficção Científica,83,36.47,3027.01,7
+C0096,Dez,12,F002,Nexo Editorial,L008,Atlas de Marte,Ficção Científica,92,36.73,3379.16,6
+C0097,Jan,1,F003,Página Sul Atacado,L009,Código Aurora,Ficção Científica,62,33.67,2087.54,16
+C0098,Fev,2,F003,Página Sul Atacado,L009,Código Aurora,Ficção Científica,67,33.52,2245.84,13
+C0099,Mar,3,F003,Página Sul Atacado,L009,Código Aurora,Ficção Científica,82,33.77,2769.14,14
+C0100,Abr,4,F003,Página Sul Atacado,L009,Código Aurora,Ficção Científica,70,34.32,2402.40,14
+C0101,Mai,5,F003,Página Sul Atacado,L009,Código Aurora,Ficção Científica,79,33.93,2680.47,16
+C0102,Jun,6,F003,Página Sul Atacado,L009,Código Aurora,Ficção Científica,81,34.37,2783.97,16
+C0103,Jul,7,F003,Página Sul Atacado,L009,Código Aurora,Ficção Científica,68,34.53,2348.04,16
+C0104,Ago,8,F003,Página Sul Atacado,L009,Código Aurora,Ficção Científica,82,34.83,2856.06,12
+C0105,Set,9,F003,Página Sul Atacado,L009,Código Aurora,Ficção Científica,79,34.48,2723.92,12
+C0106,Out,10,F003,Página Sul Atacado,L009,Código Aurora,Ficção Científica,95,34.52,3279.40,14
+C0107,Nov,11,F003,Página Sul Atacado,L009,Código Aurora,Ficção Científica,90,35.03,3152.70,13
+C0108,Dez,12,F003,Página Sul Atacado,L009,Código Aurora,Ficção Científica,100,35.00,3500.00,14
+C0109,Jan,1,F004,Horizonte Livros,L010,A Última Testemunha,Suspense,70,29.51,2065.70,10
+C0110,Fev,2,F004,Horizonte Livros,L010,A Última Testemunha,Suspense,78,29.59,2308.02,9
+C0111,Mar,3,F004,Horizonte Livros,L010,A Última Testemunha,Suspense,77,30.10,2317.70,9
+C0112,Abr,4,F004,Horizonte Livros,L010,A Última Testemunha,Suspense,80,30.28,2422.40,11
+C0113,Mai,5,F004,Horizonte Livros,L010,A Última Testemunha,Suspense,90,30.26,2723.40,7
+C0114,Jun,6,F004,Horizonte Livros,L010,A Última Testemunha,Suspense,81,30.63,2481.03,8
+C0115,Jul,7,F004,Horizonte Livros,L010,A Última Testemunha,Suspense,91,30.10,2739.10,9
+C0116,Ago,8,F004,Horizonte Livros,L010,A Última Testemunha,Suspense,98,30.57,2995.86,10
+C0117,Set,9,F004,Horizonte Livros,L010,A Última Testemunha,Suspense,86,30.31,2606.66,9
+C0118,Out,10,F004,Horizonte Livros,L010,A Última Testemunha,Suspense,87,31.02,2698.74,8
+C0119,Nov,11,F004,Horizonte Livros,L010,A Última Testemunha,Suspense,99,30.96,3065.04,9
+C0120,Dez,12,F004,Horizonte Livros,L010,A Última Testemunha,Suspense,118,31.22,3683.96,10
+C0121,Jan,1,F005,Vertex Distribuição,L011,Silêncio no 402,Suspense,79,25.80,2038.20,16
+C0122,Fev,2,F005,Vertex Distribuição,L011,Silêncio no 402,Suspense,82,25.92,2125.44,16
+C0123,Mar,3,F005,Vertex Distribuição,L011,Silêncio no 402,Suspense,92,25.35,2332.20,17
+C0124,Abr,4,F005,Vertex Distribuição,L011,Silêncio no 402,Suspense,95,25.98,2468.10,16
+C0125,Mai,5,F005,Vertex Distribuição,L011,Silêncio no 402,Suspense,92,25.62,2357.04,15
+C0126,Jun,6,F005,Vertex Distribuição,L011,Silêncio no 402,Suspense,98,26.21,2568.58,18
+C0127,Jul,7,F005,Vertex Distribuição,L011,Silêncio no 402,Suspense,88,25.83,2273.04,18
+C0128,Ago,8,F005,Vertex Distribuição,L011,Silêncio no 402,Suspense,99,25.99,2573.01,16
+C0129,Set,9,F005,Vertex Distribuição,L011,Silêncio no 402,Suspense,97,25.88,2510.36,16
+C0130,Out,10,F005,Vertex Distribuição,L011,Silêncio no 402,Suspense,105,26.18,2748.90,15
+C0131,Nov,11,F005,Vertex Distribuição,L011,Silêncio no 402,Suspense,109,26.29,2865.61,19
+C0132,Dez,12,F005,Vertex Distribuição,L011,Silêncio no 402,Suspense,122,26.61,3246.42,19
+C0133,Jan,1,F006,Saber & Cia,L012,O Relógio Quebrado,Suspense,91,28.51,2594.41,5
+C0134,Fev,2,F006,Saber & Cia,L012,O Relógio Quebrado,Suspense,91,28.07,2554.37,7
+C0135,Mar,3,F006,Saber & Cia,L012,O Relógio Quebrado,Suspense,87,28.12,2446.44,8
+C0136,Abr,4,F006,Saber & Cia,L012,O Relógio Quebrado,Suspense,100,28.66,2866.00,7
+C0137,Mai,5,F006,Saber & Cia,L012,O Relógio Quebrado,Suspense,104,28.67,2981.68,9
+C0138,Jun,6,F006,Saber & Cia,L012,O Relógio Quebrado,Suspense,96,28.61,2746.56,9
+C0139,Jul,7,F006,Saber & Cia,L012,O Relógio Quebrado,Suspense,94,28.62,2690.28,8
+C0140,Ago,8,F006,Saber & Cia,L012,O Relógio Quebrado,Suspense,95,28.90,2745.50,9
+C0141,Set,9,F006,Saber & Cia,L012,O Relógio Quebrado,Suspense,103,28.89,2975.67,5
+C0142,Out,10,F006,Saber & Cia,L012,O Relógio Quebrado,Suspense,111,29.17,3237.87,5
+C0143,Nov,11,F006,Saber & Cia,L012,O Relógio Quebrado,Suspense,118,29.19,3444.42,8
+C0144,Dez,12,F006,Saber & Cia,L012,O Relógio Quebrado,Suspense,129,29.22,3769.38,7
+C0145,Jan,1,F001,Aurora Distribuidora,L013,O Quarto Escuro,Terror,104,26.64,2770.56,12
+C0146,Fev,2,F001,Aurora Distribuidora,L013,O Quarto Escuro,Terror,102,27.12,2766.24,10
+C0147,Mar,3,F001,Aurora Distribuidora,L013,O Quarto Escuro,Terror,111,26.95,2991.45,13
+C0148,Abr,4,F001,Aurora Distribuidora,L013,O Quarto Escuro,Terror,96,27.05,2596.80,10
+C0149,Mai,5,F001,Aurora Distribuidora,L013,O Quarto Escuro,Terror,111,27.48,3050.28,13
+C0150,Jun,6,F001,Aurora Distribuidora,L013,O Quarto Escuro,Terror,110,27.35,3008.50,12
+C0151,Jul,7,F001,Aurora Distribuidora,L013,O Quarto Escuro,Terror,101,27.47,2774.47,10
+C0152,Ago,8,F001,Aurora Distribuidora,L013,O Quarto Escuro,Terror,104,27.41,2850.64,13
+C0153,Set,9,F001,Aurora Distribuidora,L013,O Quarto Escuro,Terror,114,27.37,3120.18,10
+C0154,Out,10,F001,Aurora Distribuidora,L013,O Quarto Escuro,Terror,118,27.55,3250.90,10
+C0155,Nov,11,F001,Aurora Distribuidora,L013,O Quarto Escuro,Terror,121,27.51,3328.71,10
+C0156,Dez,12,F001,Aurora Distribuidora,L013,O Quarto Escuro,Terror,143,28.01,4005.43,9
+C0157,Jan,1,F002,Nexo Editorial,L014,A Casa Sem Janelas,Terror,108,25.04,2704.32,10
+C0158,Fev,2,F002,Nexo Editorial,L014,A Casa Sem Janelas,Terror,102,25.34,2584.68,9
+C0159,Mar,3,F002,Nexo Editorial,L014,A Casa Sem Janelas,Terror,114,25.21,2873.94,7
+C0160,Abr,4,F002,Nexo Editorial,L014,A Casa Sem Janelas,Terror,103,25.64,2640.92,6
+C0161,Mai,5,F002,Nexo Editorial,L014,A Casa Sem Janelas,Terror,118,25.25,2979.50,10
+C0162,Jun,6,F002,Nexo Editorial,L014,A Casa Sem Janelas,Terror,121,25.22,3051.62,7
+C0163,Jul,7,F002,Nexo Editorial,L014,A Casa Sem Janelas,Terror,105,25.60,2688.00,9
+C0164,Ago,8,F002,Nexo Editorial,L014,A Casa Sem Janelas,Terror,126,26.06,3283.56,10
+C0165,Set,9,F002,Nexo Editorial,L014,A Casa Sem Janelas,Terror,122,26.12,3186.64,9
+C0166,Out,10,F002,Nexo Editorial,L014,A Casa Sem Janelas,Terror,132,25.84,3410.88,10
+C0167,Nov,11,F002,Nexo Editorial,L014,A Casa Sem Janelas,Terror,139,26.26,3650.14,9
+C0168,Dez,12,F002,Nexo Editorial,L014,A Casa Sem Janelas,Terror,151,25.90,3910.90,7
+C0169,Jan,1,F003,Página Sul Atacado,L015,Ecos da Meia-Noite,Terror,108,27.79,3001.32,16
+C0170,Fev,2,F003,Página Sul Atacado,L015,Ecos da Meia-Noite,Terror,117,27.79,3251.43,14
+C0171,Mar,3,F003,Página Sul Atacado,L015,Ecos da Meia-Noite,Terror,120,27.50,3300.00,14
+C0172,Abr,4,F003,Página Sul Atacado,L015,Ecos da Meia-Noite,Terror,117,27.73,3244.41,14
+C0173,Mai,5,F003,Página Sul Atacado,L015,Ecos da Meia-Noite,Terror,129,27.69,3572.01,13
+C0174,Jun,6,F003,Página Sul Atacado,L015,Ecos da Meia-Noite,Terror,121,28.00,3388.00,13
+C0175,Jul,7,F003,Página Sul Atacado,L015,Ecos da Meia-Noite,Terror,114,27.87,3177.18,15
+C0176,Ago,8,F003,Página Sul Atacado,L015,Ecos da Meia-Noite,Terror,127,28.31,3595.37,15
+C0177,Set,9,F003,Página Sul Atacado,L015,Ecos da Meia-Noite,Terror,120,28.17,3380.40,15
+C0178,Out,10,F003,Página Sul Atacado,L015,Ecos da Meia-Noite,Terror,136,28.75,3910.00,16
+C0179,Nov,11,F003,Página Sul Atacado,L015,Ecos da Meia-Noite,Terror,134,28.82,3861.88,16
+C0180,Dez,12,F003,Página Sul Atacado,L015,Ecos da Meia-Noite,Terror,158,28.65,4526.70,14
+C0181,Jan,1,F004,Horizonte Livros,L016,Liderança Essencial,Negócios,66,43.68,2882.88,10
+C0182,Fev,2,F004,Horizonte Livros,L016,Liderança Essencial,Negócios,75,43.83,3287.25,11
+C0183,Mar,3,F004,Horizonte Livros,L016,Liderança Essencial,Negócios,67,43.80,2934.60,9
+C0184,Abr,4,F004,Horizonte Livros,L016,Liderança Essencial,Negócios,76,43.95,3340.20,10
+C0185,Mai,5,F004,Horizonte Livros,L016,Liderança Essencial,Negócios,74,44.23,3273.02,10
+C0186,Jun,6,F004,Horizonte Livros,L016,Liderança Essencial,Negócios,70,44.50,3115.00,8
+C0187,Jul,7,F004,Horizonte Livros,L016,Liderança Essencial,Negócios,79,44.08,3482.32,10
+C0188,Ago,8,F004,Horizonte Livros,L016,Liderança Essencial,Negócios,85,44.61,3791.85,7
+C0189,Set,9,F004,Horizonte Livros,L016,Liderança Essencial,Negócios,70,44.82,3137.40,8
+C0190,Out,10,F004,Horizonte Livros,L016,Liderança Essencial,Negócios,85,44.65,3795.25,9
+C0191,Nov,11,F004,Horizonte Livros,L016,Liderança Essencial,Negócios,89,44.90,3996.10,10
+C0192,Dez,12,F004,Horizonte Livros,L016,Liderança Essencial,Negócios,94,45.06,4235.64,10
+C0193,Jan,1,F005,Vertex Distribuição,L017,Estratégia em Movimento,Negócios,71,46.38,3292.98,18
+C0194,Fev,2,F005,Vertex Distribuição,L017,Estratégia em Movimento,Negócios,73,46.60,3401.80,18
+C0195,Mar,3,F005,Vertex Distribuição,L017,Estratégia em Movimento,Negócios,67,46.70,3128.90,15
+C0196,Abr,4,F005,Vertex Distribuição,L017,Estratégia em Movimento,Negócios,80,46.49,3719.20,15
+C0197,Mai,5,F005,Vertex Distribuição,L017,Estratégia em Movimento,Negócios,72,47.02,3385.44,16
+C0198,Jun,6,F005,Vertex Distribuição,L017,Estratégia em Movimento,Negócios,79,47.25,3732.75,19
+C0199,Jul,7,F005,Vertex Distribuição,L017,Estratégia em Movimento,Negócios,73,46.99,3430.27,18
+C0200,Ago,8,F005,Vertex Distribuição,L017,Estratégia em Movimento,Negócios,77,47.38,3648.26,16
+C0201,Set,9,F005,Vertex Distribuição,L017,Estratégia em Movimento,Negócios,90,47.63,4286.70,17
+C0202,Out,10,F005,Vertex Distribuição,L017,Estratégia em Movimento,Negócios,84,47.73,4009.32,15
+C0203,Nov,11,F005,Vertex Distribuição,L017,Estratégia em Movimento,Negócios,90,48.14,4332.60,15
+C0204,Dez,12,F005,Vertex Distribuição,L017,Estratégia em Movimento,Negócios,111,47.65,5289.15,17
+C0205,Jan,1,F006,Saber & Cia,L018,Decisões que Escalam,Negócios,87,41.92,3647.04,8
+C0206,Fev,2,F006,Saber & Cia,L018,Decisões que Escalam,Negócios,83,42.26,3507.58,6
+C0207,Mar,3,F006,Saber & Cia,L018,Decisões que Escalam,Negócios,76,42.16,3204.16,6
+C0208,Abr,4,F006,Saber & Cia,L018,Decisões que Escalam,Negócios,79,42.38,3348.02,7
+C0209,Mai,5,F006,Saber & Cia,L018,Decisões que Escalam,Negócios,81,42.59,3449.79,9
+C0210,Jun,6,F006,Saber & Cia,L018,Decisões que Escalam,Negócios,81,42.42,3436.02,8
+C0211,Jul,7,F006,Saber & Cia,L018,Decisões que Escalam,Negócios,86,42.38,3644.68,7
+C0212,Ago,8,F006,Saber & Cia,L018,Decisões que Escalam,Negócios,81,43.07,3488.67,8
+C0213,Set,9,F006,Saber & Cia,L018,Decisões que Escalam,Negócios,86,42.92,3691.12,7
+C0214,Out,10,F006,Saber & Cia,L018,Decisões que Escalam,Negócios,101,43.26,4369.26,8
+C0215,Nov,11,F006,Saber & Cia,L018,Decisões que Escalam,Negócios,98,43.43,4256.14,7
+C0216,Dez,12,F006,Saber & Cia,L018,Decisões que Escalam,Negócios,119,43.60,5188.40,8
+C0217,Jan,1,F001,Aurora Distribuidora,L019,Além da Montanha,Biografia,89,32.63,2904.07,13
+C0218,Fev,2,F001,Aurora Distribuidora,L019,Além da Montanha,Biografia,86,32.39,2785.54,10
+C0219,Mar,3,F001,Aurora Distribuidora,L019,Além da Montanha,Biografia,82,32.47,2662.54,12
+C0220,Abr,4,F001,Aurora Distribuidora,L019,Além da Montanha,Biografia,90,32.92,2962.80,13
+C0221,Mai,5,F001,Aurora Distribuidora,L019,Além da Montanha,Biografia,97,32.74,3175.78,12
+C0222,Jun,6,F001,Aurora Distribuidora,L019,Além da Montanha,Biografia,97,32.74,3175.78,10
+C0223,Jul,7,F001,Aurora Distribuidora,L019,Além da Montanha,Biografia,93,33.29,3095.97,11
+C0224,Ago,8,F001,Aurora Distribuidora,L019,Além da Montanha,Biografia,97,33.46,3245.62,11
+C0225,Set,9,F001,Aurora Distribuidora,L019,Além da Montanha,Biografia,108,32.96,3559.68,10
+C0226,Out,10,F001,Aurora Distribuidora,L019,Além da Montanha,Biografia,96,33.24,3191.04,12
+C0227,Nov,11,F001,Aurora Distribuidora,L019,Além da Montanha,Biografia,117,33.57,3927.69,10
+C0228,Dez,12,F001,Aurora Distribuidora,L019,Além da Montanha,Biografia,126,33.75,4252.50,12
+C0229,Jan,1,F002,Nexo Editorial,L020,Uma Vida em Movimento,Biografia,96,34.31,3293.76,6
+C0230,Fev,2,F002,Nexo Editorial,L020,Uma Vida em Movimento,Biografia,93,34.02,3163.86,7
+C0231,Mar,3,F002,Nexo Editorial,L020,Uma Vida em Movimento,Biografia,96,34.45,3307.20,8
+C0232,Abr,4,F002,Nexo Editorial,L020,Uma Vida em Movimento,Biografia,105,34.50,3622.50,8
+C0233,Mai,5,F002,Nexo Editorial,L020,Uma Vida em Movimento,Biografia,105,34.93,3667.65,10
+C0234,Jun,6,F002,Nexo Editorial,L020,Uma Vida em Movimento,Biografia,104,34.59,3597.36,9
+C0235,Jul,7,F002,Nexo Editorial,L020,Uma Vida em Movimento,Biografia,97,34.68,3363.96,7
+C0236,Ago,8,F002,Nexo Editorial,L020,Uma Vida em Movimento,Biografia,99,35.09,3473.91,8
+C0237,Set,9,F002,Nexo Editorial,L020,Uma Vida em Movimento,Biografia,101,35.22,3557.22,7
+C0238,Out,10,F002,Nexo Editorial,L020,Uma Vida em Movimento,Biografia,108,34.98,3777.84,9
+C0239,Nov,11,F002,Nexo Editorial,L020,Uma Vida em Movimento,Biografia,118,35.45,4183.10,10
+C0240,Dez,12,F002,Nexo Editorial,L020,Uma Vida em Movimento,Biografia,129,35.75,4611.75,7
+C0241,Jan,1,F003,Página Sul Atacado,L021,Memórias de um Inventor,Biografia,97,35.01,3395.97,13
+C0242,Fev,2,F003,Página Sul Atacado,L021,Memórias de um Inventor,Biografia,99,34.98,3463.02,16
+C0243,Mar,3,F003,Página Sul Atacado,L021,Memórias de um Inventor,Biografia,98,35.29,3458.42,12
+C0244,Abr,4,F003,Página Sul Atacado,L021,Memórias de um Inventor,Biografia,114,35.42,4037.88,13
+C0245,Mai,5,F003,Página Sul Atacado,L021,Memórias de um Inventor,Biografia,114,35.41,4036.74,12
+C0246,Jun,6,F003,Página Sul Atacado,L021,Memórias de um Inventor,Biografia,119,35.67,4244.73,15
+C0247,Jul,7,F003,Página Sul Atacado,L021,Memórias de um Inventor,Biografia,110,35.83,3941.30,12
+C0248,Ago,8,F003,Página Sul Atacado,L021,Memórias de um Inventor,Biografia,111,36.37,4037.07,15
+C0249,Set,9,F003,Página Sul Atacado,L021,Memórias de um Inventor,Biografia,108,36.41,3932.28,15
+C0250,Out,10,F003,Página Sul Atacado,L021,Memórias de um Inventor,Biografia,125,36.01,4501.25,12
+C0251,Nov,11,F003,Página Sul Atacado,L021,Memórias de um Inventor,Biografia,122,36.19,4415.18,16
+C0252,Dez,12,F003,Página Sul Atacado,L021,Memórias de um Inventor,Biografia,138,36.26,5003.88,13
+C0253,Jan,1,F004,Horizonte Livros,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,98,30.64,3002.72,10
+C0254,Fev,2,F004,Horizonte Livros,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,104,30.90,3213.60,10
+C0255,Mar,3,F004,Horizonte Livros,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,114,31.10,3545.40,9
+C0256,Abr,4,F004,Horizonte Livros,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,122,31.26,3813.72,9
+C0257,Mai,5,F004,Horizonte Livros,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,124,31.11,3857.64,11
+C0258,Jun,6,F004,Horizonte Livros,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,111,31.45,3490.95,8
+C0259,Jul,7,F004,Horizonte Livros,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,109,31.08,3387.72,7
+C0260,Ago,8,F004,Horizonte Livros,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,116,31.17,3615.72,11
+C0261,Set,9,F004,Horizonte Livros,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,115,31.22,3590.30,10
+C0262,Out,10,F004,Horizonte Livros,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,131,31.70,4152.70,10
+C0263,Nov,11,F004,Horizonte Livros,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,136,31.34,4262.24,9
+C0264,Dez,12,F004,Horizonte Livros,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,147,31.92,4692.24,10
+C0265,Jan,1,F005,Vertex Distribuição,L023,Foco sem Pressa,Desenvolvimento Pessoal,103,31.93,3288.79,17
+C0266,Fev,2,F005,Vertex Distribuição,L023,Foco sem Pressa,Desenvolvimento Pessoal,121,32.02,3874.42,16
+C0267,Mar,3,F005,Vertex Distribuição,L023,Foco sem Pressa,Desenvolvimento Pessoal,120,31.75,3810.00,16
+C0268,Abr,4,F005,Vertex Distribuição,L023,Foco sem Pressa,Desenvolvimento Pessoal,115,32.42,3728.30,16
+C0269,Mai,5,F005,Vertex Distribuição,L023,Foco sem Pressa,Desenvolvimento Pessoal,115,31.94,3673.10,17
+C0270,Jun,6,F005,Vertex Distribuição,L023,Foco sem Pressa,Desenvolvimento Pessoal,133,32.65,4342.45,18
+C0271,Jul,7,F005,Vertex Distribuição,L023,Foco sem Pressa,Desenvolvimento Pessoal,112,32.45,3634.40,17
+C0272,Ago,8,F005,Vertex Distribuição,L023,Foco sem Pressa,Desenvolvimento Pessoal,130,32.89,4275.70,19
+C0273,Set,9,F005,Vertex Distribuição,L023,Foco sem Pressa,Desenvolvimento Pessoal,137,32.69,4478.53,15
+C0274,Out,10,F005,Vertex Distribuição,L023,Foco sem Pressa,Desenvolvimento Pessoal,126,33.07,4166.82,17
+C0275,Nov,11,F005,Vertex Distribuição,L023,Foco sem Pressa,Desenvolvimento Pessoal,143,32.58,4658.94,16
+C0276,Dez,12,F005,Vertex Distribuição,L023,Foco sem Pressa,Desenvolvimento Pessoal,165,33.09,5459.85,15
+C0277,Jan,1,F006,Saber & Cia,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,66,29.45,1943.70,6
+C0278,Fev,2,F006,Saber & Cia,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,74,29.52,2184.48,8
+C0279,Mar,3,F006,Saber & Cia,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,69,29.38,2027.22,9
+C0280,Abr,4,F006,Saber & Cia,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,77,29.80,2294.60,8
+C0281,Mai,5,F006,Saber & Cia,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,67,29.79,1995.93,8
+C0282,Jun,6,F006,Saber & Cia,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,76,29.79,2264.04,5
+C0283,Jul,7,F006,Saber & Cia,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,68,29.90,2033.20,8
+C0284,Ago,8,F006,Saber & Cia,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,77,30.23,2327.71,8
+C0285,Set,9,F006,Saber & Cia,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,86,29.90,2571.40,5
+C0286,Out,10,F006,Saber & Cia,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,82,30.15,2472.30,5
+C0287,Nov,11,F006,Saber & Cia,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,90,30.68,2761.20,5
+C0288,Dez,12,F006,Saber & Cia,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,102,30.51,3112.02,5
