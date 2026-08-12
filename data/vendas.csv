@@ -1,0 +1,289 @@
+mes,mes_num,livro_id,titulo,genero,quantidade,preco,receita
+Jan,1,L001,O Reino de Âmbar,Fantasia,75,69.90,5242.50
+Fev,2,L001,O Reino de Âmbar,Fantasia,74,69.90,5172.60
+Mar,3,L001,O Reino de Âmbar,Fantasia,78,69.90,5452.20
+Abr,4,L001,O Reino de Âmbar,Fantasia,80,69.90,5592.00
+Mai,5,L001,O Reino de Âmbar,Fantasia,84,69.90,5871.60
+Jun,6,L001,O Reino de Âmbar,Fantasia,86,69.90,6011.40
+Jul,7,L001,O Reino de Âmbar,Fantasia,83,69.90,5801.70
+Ago,8,L001,O Reino de Âmbar,Fantasia,82,69.90,5731.80
+Set,9,L001,O Reino de Âmbar,Fantasia,85,69.90,5941.50
+Out,10,L001,O Reino de Âmbar,Fantasia,86,69.90,6011.40
+Nov,11,L001,O Reino de Âmbar,Fantasia,95,69.90,6640.50
+Dez,12,L001,O Reino de Âmbar,Fantasia,107,69.90,7479.30
+Jan,1,L002,A Torre de Vidro,Fantasia,88,64.90,5711.20
+Fev,2,L002,A Torre de Vidro,Fantasia,93,64.90,6035.70
+Mar,3,L002,A Torre de Vidro,Fantasia,100,64.90,6490.00
+Abr,4,L002,A Torre de Vidro,Fantasia,103,64.90,6684.70
+Mai,5,L002,A Torre de Vidro,Fantasia,103,64.90,6684.70
+Jun,6,L002,A Torre de Vidro,Fantasia,110,64.90,7139.00
+Jul,7,L002,A Torre de Vidro,Fantasia,106,64.90,6879.40
+Ago,8,L002,A Torre de Vidro,Fantasia,106,64.90,6879.40
+Set,9,L002,A Torre de Vidro,Fantasia,116,64.90,7528.40
+Out,10,L002,A Torre de Vidro,Fantasia,121,64.90,7852.90
+Nov,11,L002,A Torre de Vidro,Fantasia,128,64.90,8307.20
+Dez,12,L002,A Torre de Vidro,Fantasia,140,64.90,9086.00
+Jan,1,L003,Crônicas do Norte,Fantasia,112,74.90,8388.80
+Fev,2,L003,Crônicas do Norte,Fantasia,112,74.90,8388.80
+Mar,3,L003,Crônicas do Norte,Fantasia,115,74.90,8613.50
+Abr,4,L003,Crônicas do Norte,Fantasia,121,74.90,9062.90
+Mai,5,L003,Crônicas do Norte,Fantasia,133,74.90,9961.70
+Jun,6,L003,Crônicas do Norte,Fantasia,136,74.90,10186.40
+Jul,7,L003,Crônicas do Norte,Fantasia,132,74.90,9886.80
+Ago,8,L003,Crônicas do Norte,Fantasia,141,74.90,10560.90
+Set,9,L003,Crônicas do Norte,Fantasia,144,74.90,10785.60
+Out,10,L003,Crônicas do Norte,Fantasia,157,74.90,11759.30
+Nov,11,L003,Crônicas do Norte,Fantasia,165,74.90,12358.50
+Dez,12,L003,Crônicas do Norte,Fantasia,188,74.90,14081.20
+Jan,1,L004,Jardim de Inverno,Romance,66,44.90,2963.40
+Fev,2,L004,Jardim de Inverno,Romance,68,44.90,3053.20
+Mar,3,L004,Jardim de Inverno,Romance,74,44.90,3322.60
+Abr,4,L004,Jardim de Inverno,Romance,76,44.90,3412.40
+Mai,5,L004,Jardim de Inverno,Romance,80,44.90,3592.00
+Jun,6,L004,Jardim de Inverno,Romance,80,44.90,3592.00
+Jul,7,L004,Jardim de Inverno,Romance,78,44.90,3502.20
+Ago,8,L004,Jardim de Inverno,Romance,85,44.90,3816.50
+Set,9,L004,Jardim de Inverno,Romance,87,44.90,3906.30
+Out,10,L004,Jardim de Inverno,Romance,94,44.90,4220.60
+Nov,11,L004,Jardim de Inverno,Romance,103,44.90,4624.70
+Dez,12,L004,Jardim de Inverno,Romance,118,44.90,5298.20
+Jan,1,L005,Cartas para Lisboa,Romance,79,49.90,3942.10
+Fev,2,L005,Cartas para Lisboa,Romance,80,49.90,3992.00
+Mar,3,L005,Cartas para Lisboa,Romance,83,49.90,4141.70
+Abr,4,L005,Cartas para Lisboa,Romance,84,49.90,4191.60
+Mai,5,L005,Cartas para Lisboa,Romance,86,49.90,4291.40
+Jun,6,L005,Cartas para Lisboa,Romance,93,49.90,4640.70
+Jul,7,L005,Cartas para Lisboa,Romance,86,49.90,4291.40
+Ago,8,L005,Cartas para Lisboa,Romance,90,49.90,4491.00
+Set,9,L005,Cartas para Lisboa,Romance,89,49.90,4441.10
+Out,10,L005,Cartas para Lisboa,Romance,97,49.90,4840.30
+Nov,11,L005,Cartas para Lisboa,Romance,100,49.90,4990.00
+Dez,12,L005,Cartas para Lisboa,Romance,112,49.90,5588.80
+Jan,1,L006,Depois da Chuva,Romance,87,42.90,3732.30
+Fev,2,L006,Depois da Chuva,Romance,88,42.90,3775.20
+Mar,3,L006,Depois da Chuva,Romance,91,42.90,3903.90
+Abr,4,L006,Depois da Chuva,Romance,95,42.90,4075.50
+Mai,5,L006,Depois da Chuva,Romance,99,42.90,4247.10
+Jun,6,L006,Depois da Chuva,Romance,102,42.90,4375.80
+Jul,7,L006,Depois da Chuva,Romance,92,42.90,3946.80
+Ago,8,L006,Depois da Chuva,Romance,97,42.90,4161.30
+Set,9,L006,Depois da Chuva,Romance,102,42.90,4375.80
+Out,10,L006,Depois da Chuva,Romance,106,42.90,4547.40
+Nov,11,L006,Depois da Chuva,Romance,115,42.90,4933.50
+Dez,12,L006,Depois da Chuva,Romance,136,42.90,5834.40
+Jan,1,L007,O Último Horizonte,Ficção Científica,86,59.90,5151.40
+Fev,2,L007,O Último Horizonte,Ficção Científica,87,59.90,5211.30
+Mar,3,L007,O Último Horizonte,Ficção Científica,93,59.90,5570.70
+Abr,4,L007,O Último Horizonte,Ficção Científica,96,59.90,5750.40
+Mai,5,L007,O Último Horizonte,Ficção Científica,103,59.90,6169.70
+Jun,6,L007,O Último Horizonte,Ficção Científica,104,59.90,6229.60
+Jul,7,L007,O Último Horizonte,Ficção Científica,98,59.90,5870.20
+Ago,8,L007,O Último Horizonte,Ficção Científica,105,59.90,6289.50
+Set,9,L007,O Último Horizonte,Ficção Científica,111,59.90,6648.90
+Out,10,L007,O Último Horizonte,Ficção Científica,115,59.90,6888.50
+Nov,11,L007,O Último Horizonte,Ficção Científica,130,59.90,7787.00
+Dez,12,L007,O Último Horizonte,Ficção Científica,149,59.90,8925.10
+Jan,1,L008,Atlas de Marte,Ficção Científica,101,66.90,6756.90
+Fev,2,L008,Atlas de Marte,Ficção Científica,106,66.90,7091.40
+Mar,3,L008,Atlas de Marte,Ficção Científica,119,66.90,7961.10
+Abr,4,L008,Atlas de Marte,Ficção Científica,121,66.90,8094.90
+Mai,5,L008,Atlas de Marte,Ficção Científica,122,66.90,8161.80
+Jun,6,L008,Atlas de Marte,Ficção Científica,128,66.90,8563.20
+Jul,7,L008,Atlas de Marte,Ficção Científica,124,66.90,8295.60
+Ago,8,L008,Atlas de Marte,Ficção Científica,140,66.90,9366.00
+Set,9,L008,Atlas de Marte,Ficção Científica,147,66.90,9834.30
+Out,10,L008,Atlas de Marte,Ficção Científica,152,66.90,10168.80
+Nov,11,L008,Atlas de Marte,Ficção Científica,164,66.90,10971.60
+Dez,12,L008,Atlas de Marte,Ficção Científica,190,66.90,12711.00
+Jan,1,L009,Código Aurora,Ficção Científica,113,62.90,7107.70
+Fev,2,L009,Código Aurora,Ficção Científica,112,62.90,7044.80
+Mar,3,L009,Código Aurora,Ficção Científica,120,62.90,7548.00
+Abr,4,L009,Código Aurora,Ficção Científica,123,62.90,7736.70
+Mai,5,L009,Código Aurora,Ficção Científica,117,62.90,7359.30
+Jun,6,L009,Código Aurora,Ficção Científica,127,62.90,7988.30
+Jul,7,L009,Código Aurora,Ficção Científica,119,62.90,7485.10
+Ago,8,L009,Código Aurora,Ficção Científica,124,62.90,7799.60
+Set,9,L009,Código Aurora,Ficção Científica,123,62.90,7736.70
+Out,10,L009,Código Aurora,Ficção Científica,133,62.90,8365.70
+Nov,11,L009,Código Aurora,Ficção Científica,137,62.90,8617.30
+Dez,12,L009,Código Aurora,Ficção Científica,156,62.90,9812.40
+Jan,1,L010,A Última Testemunha,Suspense,74,54.90,4062.60
+Fev,2,L010,A Última Testemunha,Suspense,80,54.90,4392.00
+Mar,3,L010,A Última Testemunha,Suspense,83,54.90,4556.70
+Abr,4,L010,A Última Testemunha,Suspense,82,54.90,4501.80
+Mai,5,L010,A Última Testemunha,Suspense,85,54.90,4666.50
+Jun,6,L010,A Última Testemunha,Suspense,86,54.90,4721.40
+Jul,7,L010,A Última Testemunha,Suspense,87,54.90,4776.30
+Ago,8,L010,A Última Testemunha,Suspense,92,54.90,5050.80
+Set,9,L010,A Última Testemunha,Suspense,90,54.90,4941.00
+Out,10,L010,A Última Testemunha,Suspense,97,54.90,5325.30
+Nov,11,L010,A Última Testemunha,Suspense,106,54.90,5819.40
+Dez,12,L010,A Última Testemunha,Suspense,114,54.90,6258.60
+Jan,1,L011,Silêncio no 402,Suspense,81,47.90,3879.90
+Fev,2,L011,Silêncio no 402,Suspense,84,47.90,4023.60
+Mar,3,L011,Silêncio no 402,Suspense,89,47.90,4263.10
+Abr,4,L011,Silêncio no 402,Suspense,92,47.90,4406.80
+Mai,5,L011,Silêncio no 402,Suspense,91,47.90,4358.90
+Jun,6,L011,Silêncio no 402,Suspense,97,47.90,4646.30
+Jul,7,L011,Silêncio no 402,Suspense,91,47.90,4358.90
+Ago,8,L011,Silêncio no 402,Suspense,105,47.90,5029.50
+Set,9,L011,Silêncio no 402,Suspense,108,47.90,5173.20
+Out,10,L011,Silêncio no 402,Suspense,114,47.90,5460.60
+Nov,11,L011,Silêncio no 402,Suspense,120,47.90,5748.00
+Dez,12,L011,Silêncio no 402,Suspense,132,47.90,6322.80
+Jan,1,L012,O Relógio Quebrado,Suspense,98,52.90,5184.20
+Fev,2,L012,O Relógio Quebrado,Suspense,104,52.90,5501.60
+Mar,3,L012,O Relógio Quebrado,Suspense,103,52.90,5448.70
+Abr,4,L012,O Relógio Quebrado,Suspense,112,52.90,5924.80
+Mai,5,L012,O Relógio Quebrado,Suspense,113,52.90,5977.70
+Jun,6,L012,O Relógio Quebrado,Suspense,126,52.90,6665.40
+Jul,7,L012,O Relógio Quebrado,Suspense,121,52.90,6400.90
+Ago,8,L012,O Relógio Quebrado,Suspense,125,52.90,6612.50
+Set,9,L012,O Relógio Quebrado,Suspense,133,52.90,7035.70
+Out,10,L012,O Relógio Quebrado,Suspense,143,52.90,7564.70
+Nov,11,L012,O Relógio Quebrado,Suspense,155,52.90,8199.50
+Dez,12,L012,O Relógio Quebrado,Suspense,184,52.90,9733.60
+Jan,1,L013,O Quarto Escuro,Terror,61,49.90,3043.90
+Fev,2,L013,O Quarto Escuro,Terror,62,49.90,3093.80
+Mar,3,L013,O Quarto Escuro,Terror,66,49.90,3293.40
+Abr,4,L013,O Quarto Escuro,Terror,69,49.90,3443.10
+Mai,5,L013,O Quarto Escuro,Terror,67,49.90,3343.30
+Jun,6,L013,O Quarto Escuro,Terror,70,49.90,3493.00
+Jul,7,L013,O Quarto Escuro,Terror,69,49.90,3443.10
+Ago,8,L013,O Quarto Escuro,Terror,71,49.90,3542.90
+Set,9,L013,O Quarto Escuro,Terror,71,49.90,3542.90
+Out,10,L013,O Quarto Escuro,Terror,99,49.90,4940.10
+Nov,11,L013,O Quarto Escuro,Terror,78,49.90,3892.20
+Dez,12,L013,O Quarto Escuro,Terror,87,49.90,4341.30
+Jan,1,L014,A Casa Sem Janelas,Terror,65,46.90,3048.50
+Fev,2,L014,A Casa Sem Janelas,Terror,69,46.90,3236.10
+Mar,3,L014,A Casa Sem Janelas,Terror,70,46.90,3283.00
+Abr,4,L014,A Casa Sem Janelas,Terror,73,46.90,3423.70
+Mai,5,L014,A Casa Sem Janelas,Terror,74,46.90,3470.60
+Jun,6,L014,A Casa Sem Janelas,Terror,80,46.90,3752.00
+Jul,7,L014,A Casa Sem Janelas,Terror,73,46.90,3423.70
+Ago,8,L014,A Casa Sem Janelas,Terror,83,46.90,3892.70
+Set,9,L014,A Casa Sem Janelas,Terror,84,46.90,3939.60
+Out,10,L014,A Casa Sem Janelas,Terror,110,46.90,5159.00
+Nov,11,L014,A Casa Sem Janelas,Terror,92,46.90,4314.80
+Dez,12,L014,A Casa Sem Janelas,Terror,106,46.90,4971.40
+Jan,1,L015,Ecos da Meia-Noite,Terror,77,51.90,3996.30
+Fev,2,L015,Ecos da Meia-Noite,Terror,80,51.90,4152.00
+Mar,3,L015,Ecos da Meia-Noite,Terror,90,51.90,4671.00
+Abr,4,L015,Ecos da Meia-Noite,Terror,91,51.90,4722.90
+Mai,5,L015,Ecos da Meia-Noite,Terror,94,51.90,4878.60
+Jun,6,L015,Ecos da Meia-Noite,Terror,100,51.90,5190.00
+Jul,7,L015,Ecos da Meia-Noite,Terror,96,51.90,4982.40
+Ago,8,L015,Ecos da Meia-Noite,Terror,98,51.90,5086.20
+Set,9,L015,Ecos da Meia-Noite,Terror,101,51.90,5241.90
+Out,10,L015,Ecos da Meia-Noite,Terror,145,51.90,7525.50
+Nov,11,L015,Ecos da Meia-Noite,Terror,120,51.90,6228.00
+Dez,12,L015,Ecos da Meia-Noite,Terror,136,51.90,7058.40
+Jan,1,L016,Liderança Essencial,Negócios,59,79.90,4714.10
+Fev,2,L016,Liderança Essencial,Negócios,53,79.90,4234.70
+Mar,3,L016,Liderança Essencial,Negócios,57,79.90,4554.30
+Abr,4,L016,Liderança Essencial,Negócios,56,79.90,4474.40
+Mai,5,L016,Liderança Essencial,Negócios,60,79.90,4794.00
+Jun,6,L016,Liderança Essencial,Negócios,63,79.90,5033.70
+Jul,7,L016,Liderança Essencial,Negócios,63,79.90,5033.70
+Ago,8,L016,Liderança Essencial,Negócios,65,79.90,5193.50
+Set,9,L016,Liderança Essencial,Negócios,68,79.90,5433.20
+Out,10,L016,Liderança Essencial,Negócios,74,79.90,5912.60
+Nov,11,L016,Liderança Essencial,Negócios,82,79.90,6551.80
+Dez,12,L016,Liderança Essencial,Negócios,91,79.90,7270.90
+Jan,1,L017,Estratégia em Movimento,Negócios,71,84.90,6027.90
+Fev,2,L017,Estratégia em Movimento,Negócios,65,84.90,5518.50
+Mar,3,L017,Estratégia em Movimento,Negócios,65,84.90,5518.50
+Abr,4,L017,Estratégia em Movimento,Negócios,69,84.90,5858.10
+Mai,5,L017,Estratégia em Movimento,Negócios,68,84.90,5773.20
+Jun,6,L017,Estratégia em Movimento,Negócios,67,84.90,5688.30
+Jul,7,L017,Estratégia em Movimento,Negócios,68,84.90,5773.20
+Ago,8,L017,Estratégia em Movimento,Negócios,71,84.90,6027.90
+Set,9,L017,Estratégia em Movimento,Negócios,73,84.90,6197.70
+Out,10,L017,Estratégia em Movimento,Negócios,76,84.90,6452.40
+Nov,11,L017,Estratégia em Movimento,Negócios,82,84.90,6961.80
+Dez,12,L017,Estratégia em Movimento,Negócios,86,84.90,7301.40
+Jan,1,L018,Decisões que Escalam,Negócios,85,76.90,6536.50
+Fev,2,L018,Decisões que Escalam,Negócios,74,76.90,5690.60
+Mar,3,L018,Decisões que Escalam,Negócios,78,76.90,5998.20
+Abr,4,L018,Decisões que Escalam,Negócios,78,76.90,5998.20
+Mai,5,L018,Decisões que Escalam,Negócios,83,76.90,6382.70
+Jun,6,L018,Decisões que Escalam,Negócios,90,76.90,6921.00
+Jul,7,L018,Decisões que Escalam,Negócios,80,76.90,6152.00
+Ago,8,L018,Decisões que Escalam,Negócios,89,76.90,6844.10
+Set,9,L018,Decisões que Escalam,Negócios,89,76.90,6844.10
+Out,10,L018,Decisões que Escalam,Negócios,93,76.90,7151.70
+Nov,11,L018,Decisões que Escalam,Negócios,106,76.90,8151.40
+Dez,12,L018,Decisões que Escalam,Negócios,119,76.90,9151.10
+Jan,1,L019,Além da Montanha,Biografia,48,58.90,2827.20
+Fev,2,L019,Além da Montanha,Biografia,51,58.90,3003.90
+Mar,3,L019,Além da Montanha,Biografia,51,58.90,3003.90
+Abr,4,L019,Além da Montanha,Biografia,54,58.90,3180.60
+Mai,5,L019,Além da Montanha,Biografia,59,58.90,3475.10
+Jun,6,L019,Além da Montanha,Biografia,60,58.90,3534.00
+Jul,7,L019,Além da Montanha,Biografia,57,58.90,3357.30
+Ago,8,L019,Além da Montanha,Biografia,63,58.90,3710.70
+Set,9,L019,Além da Montanha,Biografia,61,58.90,3592.90
+Out,10,L019,Além da Montanha,Biografia,68,58.90,4005.20
+Nov,11,L019,Além da Montanha,Biografia,74,58.90,4358.60
+Dez,12,L019,Além da Montanha,Biografia,85,58.90,5006.50
+Jan,1,L020,Uma Vida em Movimento,Biografia,57,61.90,3528.30
+Fev,2,L020,Uma Vida em Movimento,Biografia,65,61.90,4023.50
+Mar,3,L020,Uma Vida em Movimento,Biografia,64,61.90,3961.60
+Abr,4,L020,Uma Vida em Movimento,Biografia,68,61.90,4209.20
+Mai,5,L020,Uma Vida em Movimento,Biografia,73,61.90,4518.70
+Jun,6,L020,Uma Vida em Movimento,Biografia,77,61.90,4766.30
+Jul,7,L020,Uma Vida em Movimento,Biografia,72,61.90,4456.80
+Ago,8,L020,Uma Vida em Movimento,Biografia,77,61.90,4766.30
+Set,9,L020,Uma Vida em Movimento,Biografia,85,61.90,5261.50
+Out,10,L020,Uma Vida em Movimento,Biografia,86,61.90,5323.40
+Nov,11,L020,Uma Vida em Movimento,Biografia,98,61.90,6066.20
+Dez,12,L020,Uma Vida em Movimento,Biografia,112,61.90,6932.80
+Jan,1,L021,Memórias de um Inventor,Biografia,62,63.90,3961.80
+Fev,2,L021,Memórias de um Inventor,Biografia,65,63.90,4153.50
+Mar,3,L021,Memórias de um Inventor,Biografia,67,63.90,4281.30
+Abr,4,L021,Memórias de um Inventor,Biografia,71,63.90,4536.90
+Mai,5,L021,Memórias de um Inventor,Biografia,68,63.90,4345.20
+Jun,6,L021,Memórias de um Inventor,Biografia,73,63.90,4664.70
+Jul,7,L021,Memórias de um Inventor,Biografia,66,63.90,4217.40
+Ago,8,L021,Memórias de um Inventor,Biografia,71,63.90,4536.90
+Set,9,L021,Memórias de um Inventor,Biografia,74,63.90,4728.60
+Out,10,L021,Memórias de um Inventor,Biografia,74,63.90,4728.60
+Nov,11,L021,Memórias de um Inventor,Biografia,81,63.90,5175.90
+Dez,12,L021,Memórias de um Inventor,Biografia,92,63.90,5878.80
+Jan,1,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,78,55.90,4360.20
+Fev,2,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,72,55.90,4024.80
+Mar,3,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,78,55.90,4360.20
+Abr,4,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,81,55.90,4527.90
+Mai,5,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,77,55.90,4304.30
+Jun,6,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,80,55.90,4472.00
+Jul,7,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,77,55.90,4304.30
+Ago,8,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,86,55.90,4807.40
+Set,9,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,88,55.90,4919.20
+Out,10,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,92,55.90,5142.80
+Nov,11,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,97,55.90,5422.30
+Dez,12,L022,Hábitos que Permanecem,Desenvolvimento Pessoal,106,55.90,5925.40
+Jan,1,L023,Foco sem Pressa,Desenvolvimento Pessoal,101,57.90,5847.90
+Fev,2,L023,Foco sem Pressa,Desenvolvimento Pessoal,90,57.90,5211.00
+Mar,3,L023,Foco sem Pressa,Desenvolvimento Pessoal,93,57.90,5384.70
+Abr,4,L023,Foco sem Pressa,Desenvolvimento Pessoal,100,57.90,5790.00
+Mai,5,L023,Foco sem Pressa,Desenvolvimento Pessoal,101,57.90,5847.90
+Jun,6,L023,Foco sem Pressa,Desenvolvimento Pessoal,100,57.90,5790.00
+Jul,7,L023,Foco sem Pressa,Desenvolvimento Pessoal,102,57.90,5905.80
+Ago,8,L023,Foco sem Pressa,Desenvolvimento Pessoal,106,57.90,6137.40
+Set,9,L023,Foco sem Pressa,Desenvolvimento Pessoal,112,57.90,6484.80
+Out,10,L023,Foco sem Pressa,Desenvolvimento Pessoal,121,57.90,7005.90
+Nov,11,L023,Foco sem Pressa,Desenvolvimento Pessoal,125,57.90,7237.50
+Dez,12,L023,Foco sem Pressa,Desenvolvimento Pessoal,140,57.90,8106.00
+Jan,1,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,101,53.90,5443.90
+Fev,2,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,95,53.90,5120.50
+Mar,3,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,98,53.90,5282.20
+Abr,4,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,106,53.90,5713.40
+Mai,5,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,112,53.90,6036.80
+Jun,6,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,113,53.90,6090.70
+Jul,7,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,112,53.90,6036.80
+Ago,8,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,118,53.90,6360.20
+Set,9,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,125,53.90,6737.50
+Out,10,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,138,53.90,7438.20
+Nov,11,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,152,53.90,8192.80
+Dez,12,L024,Coragem para Recomeçar,Desenvolvimento Pessoal,162,53.90,8731.80
