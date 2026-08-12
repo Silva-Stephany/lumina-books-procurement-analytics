@@ -484,17 +484,19 @@ main {
 /* TÍTULOS */
 
 h1 {
+    font-family: var(--fonte-titulo);
     color: var(--roxo-escuro);
-
-    font-size: 36px;
-
-    margin-bottom: 5px;
+    font-size: 46px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
 }
 
-
 h2 {
+    font-family: var(--fonte-titulo);
     color: var(--roxo);
-
+    font-size: 30px;
+    font-weight: 600;
 }
 
 
@@ -1077,4 +1079,45 @@ main::before {
         font-size: 45px;
     }
 
+}
+p,
+label,
+input,
+select,
+table,
+td,
+th,
+span,
+a,
+strong,
+small {
+    font-family: var(--fonte-texto);
+}
+
+nav a {
+    font-family: var(--fonte-texto);
+    letter-spacing: 0.2px;
+}
+
+.card strong {
+    font-family: var(--fonte-texto);
+    font-weight: 700;
+}
+
+.hero-marca strong {
+    font-family: var(--fonte-titulo);
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.hero-marca small {
+    font-family: var(--fonte-texto);
+    font-size: 13px;
+    letter-spacing: 0.6px;
+}
+
+.grafico-card h2,
+.tabela-container h2,
+.modulo-card strong {
+    font-family: var(--fonte-titulo);
 }
