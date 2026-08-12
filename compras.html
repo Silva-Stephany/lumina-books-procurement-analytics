@@ -19,38 +19,49 @@
         <a href="estoque.html">Estoque</a>
         <a href="fornecedores.html">Fornecedores</a>
         <a href="recomendacoes.html">Recomendações</a>
+        <a href="sobre.html">Sobre</a>
     </nav>
-<a href="sobre.html">Sobre</a>
+
     <main>
-<section class="hero-livraria">
 
-    <div class="hero-conteudo">
+        <section class="hero-livraria">
 
-        <div class="hero-marca">
-            <span class="hero-icone">📚</span>
+            <div class="hero-conteudo">
 
-            <div>
-                <strong>Lumina Books</strong>
-                <small>Procurement Analytics & Book Intelligence</small>
+                <div class="hero-marca">
+
+                    <span class="hero-icone">📚</span>
+
+                    <div>
+                        <strong>Lumina Books</strong>
+                        <small>
+                            Procurement Analytics & Book Intelligence
+                        </small>
+                    </div>
+
+                </div>
+
+                <div
+                    class="estante-decorativa"
+                    aria-hidden="true"
+                >
+
+                    <span class="livro livro-1"></span>
+                    <span class="livro livro-2"></span>
+                    <span class="livro livro-3"></span>
+                    <span class="livro livro-4"></span>
+                    <span class="livro livro-5"></span>
+                    <span class="livro livro-6"></span>
+                    <span class="livro livro-7"></span>
+                    <span class="livro livro-8"></span>
+
+                </div>
+
             </div>
-        </div>
 
-        <div class="estante-decorativa" aria-hidden="true">
+        </section>
 
-            <span class="livro livro-1"></span>
-            <span class="livro livro-2"></span>
-            <span class="livro livro-3"></span>
-            <span class="livro livro-4"></span>
-            <span class="livro livro-5"></span>
-            <span class="livro livro-6"></span>
-            <span class="livro livro-7"></span>
-            <span class="livro livro-8"></span>
 
-        </div>
-
-    </div>
-
-</section>
         <h1>🧾 Análise de Compras</h1>
 
         <p>
@@ -58,96 +69,247 @@
             custos e participação dos fornecedores.
         </p>
 
+
         <!-- FILTROS -->
 
         <section class="filtros">
 
             <div>
-                <label for="filtroMes">Mês</label>
+
+                <label for="filtroMes">
+                    Mês
+                </label>
 
                 <select id="filtroMes">
-                    <option value="Todos">Todos</option>
+                    <option value="Todos">
+                        Todos
+                    </option>
                 </select>
+
             </div>
 
+
             <div>
-                <label for="filtroGenero">Gênero</label>
+
+                <label for="filtroGenero">
+                    Gênero
+                </label>
 
                 <select id="filtroGenero">
-                    <option value="Todos">Todos</option>
+                    <option value="Todos">
+                        Todos
+                    </option>
                 </select>
+
             </div>
 
+
             <div>
-                <label for="filtroFornecedor">Fornecedor</label>
+
+                <label for="filtroFornecedor">
+                    Fornecedor
+                </label>
 
                 <select id="filtroFornecedor">
-                    <option value="Todos">Todos</option>
+                    <option value="Todos">
+                        Todos
+                    </option>
                 </select>
+
             </div>
 
         </section>
+
 
         <!-- KPIs -->
 
         <section class="cards">
 
-<div class="card">
-    <h3>🏢 Concentração Top 3</h3>
-    <p id="kpiTop3Fornecedores">-</p>
-    <small>Participação dos 3 maiores fornecedores</small>
-</div>
+            <div class="card">
 
-<div class="card">
-    <h3>📦 Volume Médio Comprado</h3>
-    <p id="kpiVolumeMedio">-</p>
-    <small>Média de unidades por registro de compra</small>
-</div>
+                <h3>
+                    💰 Investimento Total
+                </h3>
 
-<div class="card">
-    <h3>💰 Maior Gasto por Fornecedor</h3>
-    <p id="kpiMaiorGastoFornecedor">-</p>
-    <small>Maior valor concentrado em um fornecedor</small>
-</div>
+                <p id="kpiInvestimento">
+                    -
+                </p>
+
+                <small>
+                    Valor total das compras
+                </small>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    📦 Unidades Compradas
+                </h3>
+
+                <p id="kpiQuantidade">
+                    -
+                </p>
+
+                <small>
+                    Volume total adquirido
+                </small>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🏷️ Custo Médio Unitário
+                </h3>
+
+                <p id="kpiCustoMedio">
+                    -
+                </p>
+
+                <small>
+                    Custo médio por unidade
+                </small>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🏆 Fornecedor Líder
+                </h3>
+
+                <p id="kpiFornecedor">
+                    -
+                </p>
+
+                <small>
+                    Fornecedor com maior gasto
+                </small>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🏢 Concentração Top 3
+                </h3>
+
+                <p id="kpiTop3Fornecedores">
+                    -
+                </p>
+
+                <small>
+                    Participação dos 3 maiores fornecedores
+                </small>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    📊 Volume Médio Comprado
+                </h3>
+
+                <p id="kpiVolumeMedio">
+                    -
+                </p>
+
+                <small>
+                    Média de unidades por registro de compra
+                </small>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    💵 Maior Gasto por Fornecedor
+                </h3>
+
+                <p id="kpiMaiorGastoFornecedor">
+                    -
+                </p>
+
+                <small>
+                    Maior valor concentrado em um fornecedor
+                </small>
+
+            </div>
 
         </section>
+
 
         <!-- GRÁFICOS -->
 
         <section class="graficos">
 
             <div class="grafico-card">
-                <h2>Evolução mensal das compras</h2>
+
+                <h2>
+                    Evolução mensal das compras
+                </h2>
+
                 <canvas id="graficoMensal"></canvas>
+
             </div>
 
+
             <div class="grafico-card">
-                <h2>Gasto por fornecedor</h2>
+
+                <h2>
+                    Gasto por fornecedor
+                </h2>
+
                 <canvas id="graficoFornecedor"></canvas>
+
             </div>
 
+
             <div class="grafico-card">
-                <h2>Curva ABC por título</h2>
+
+                <h2>
+                    Curva ABC por título
+                </h2>
+
                 <canvas id="graficoABC"></canvas>
+
             </div>
 
+
             <div class="grafico-card">
-                <h2>Custo médio por gênero</h2>
+
+                <h2>
+                    Custo médio por gênero
+                </h2>
+
                 <canvas id="graficoGenero"></canvas>
+
             </div>
 
         </section>
+
 
         <!-- TABELA -->
 
         <section class="tabela-container">
 
-            <h2>Detalhamento das compras</h2>
+            <h2>
+                Detalhamento das compras
+            </h2>
 
             <table>
 
                 <thead>
+
                     <tr>
+
                         <th>Mês</th>
                         <th>Livro</th>
                         <th>Gênero</th>
@@ -156,7 +318,9 @@
                         <th>Custo unitário</th>
                         <th>Valor da compra</th>
                         <th>Prazo</th>
+
                     </tr>
+
                 </thead>
 
                 <tbody id="tabelaCompras"></tbody>
@@ -167,8 +331,11 @@
 
     </main>
 
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="js/shared.js"></script>
+
 
     <script>
 
@@ -179,114 +346,199 @@
         let graficoABC;
         let graficoGenero;
 
+
         async function iniciarDashboard() {
 
-            compras = await carregarCSV("data/compras.csv");
+            compras = await carregarCSV(
+                "data/compras.csv"
+            );
 
             prepararFiltros();
 
             atualizarDashboard();
+
         }
+
 
         function prepararFiltros() {
 
             const meses = [
                 ...new Set(
-                    compras.map(item => item.mes)
+                    compras.map(
+                        item => item.mes
+                    )
                 )
             ];
 
+
             const generos = [
                 ...new Set(
-                    compras.map(item => item.genero)
+                    compras.map(
+                        item => item.genero
+                    )
                 )
             ].sort();
+
 
             const fornecedores = [
                 ...new Set(
-                    compras.map(item => item.fornecedor)
+                    compras.map(
+                        item => item.fornecedor
+                    )
                 )
             ].sort();
 
-            meses.forEach(mes => {
-                adicionarOpcao("filtroMes", mes);
-            });
 
-            generos.forEach(genero => {
-                adicionarOpcao("filtroGenero", genero);
-            });
+            meses.forEach(
+                mes => {
 
-            fornecedores.forEach(fornecedor => {
-                adicionarOpcao("filtroFornecedor", fornecedor);
-            });
+                    adicionarOpcao(
+                        "filtroMes",
+                        mes
+                    );
+
+                }
+            );
+
+
+            generos.forEach(
+                genero => {
+
+                    adicionarOpcao(
+                        "filtroGenero",
+                        genero
+                    );
+
+                }
+            );
+
+
+            fornecedores.forEach(
+                fornecedor => {
+
+                    adicionarOpcao(
+                        "filtroFornecedor",
+                        fornecedor
+                    );
+
+                }
+            );
+
         }
 
-        function adicionarOpcao(id, valor) {
 
-            const opcao = document.createElement("option");
+        function adicionarOpcao(
+            id,
+            valor
+        ) {
+
+            const opcao =
+                document.createElement(
+                    "option"
+                );
 
             opcao.value = valor;
+
             opcao.textContent = valor;
 
             document
                 .getElementById(id)
                 .appendChild(opcao);
+
         }
+
 
         function obterComprasFiltradas() {
 
             const mes =
-                document.getElementById("filtroMes").value;
+                document
+                    .getElementById(
+                        "filtroMes"
+                    )
+                    .value;
+
 
             const genero =
-                document.getElementById("filtroGenero").value;
+                document
+                    .getElementById(
+                        "filtroGenero"
+                    )
+                    .value;
+
 
             const fornecedor =
-                document.getElementById("filtroFornecedor").value;
+                document
+                    .getElementById(
+                        "filtroFornecedor"
+                    )
+                    .value;
 
-            return compras.filter(item => {
 
-                const filtroMes =
-                    mes === "Todos" ||
-                    item.mes === mes;
+            return compras.filter(
+                item => {
 
-                const filtroGenero =
-                    genero === "Todos" ||
-                    item.genero === genero;
+                    const filtroMes =
+                        mes === "Todos" ||
+                        item.mes === mes;
 
-                const filtroFornecedor =
-                    fornecedor === "Todos" ||
-                    item.fornecedor === fornecedor;
 
-                return (
-                    filtroMes &&
-                    filtroGenero &&
-                    filtroFornecedor
-                );
-            });
+                    const filtroGenero =
+                        genero === "Todos" ||
+                        item.genero === genero;
+
+
+                    const filtroFornecedor =
+                        fornecedor === "Todos" ||
+                        item.fornecedor === fornecedor;
+
+
+                    return (
+                        filtroMes &&
+                        filtroGenero &&
+                        filtroFornecedor
+                    );
+
+                }
+            );
+
         }
+
 
         function atualizarDashboard() {
 
-            const dados = obterComprasFiltradas();
+            const dados =
+                obterComprasFiltradas();
 
             atualizarKPIs(dados);
+
             atualizarGraficos(dados);
+
             atualizarTabela(dados);
+
         }
+
 
         function atualizarKPIs(dados) {
 
             const investimento =
-                somar(dados, "valor_compra");
+                somar(
+                    dados,
+                    "valor_compra"
+                );
+
 
             const quantidade =
-                somar(dados, "quantidade");
+                somar(
+                    dados,
+                    "quantidade"
+                );
+
 
             const custoMedio =
                 quantidade > 0
-                ? investimento / quantidade
-                : 0;
+                    ? investimento / quantidade
+                    : 0;
+
 
             const gastoFornecedor =
                 agruparESomar(
@@ -295,52 +547,182 @@
                     "valor_compra"
                 );
 
+
             let fornecedorLider = "-";
+
             let maiorValor = 0;
+
 
             Object.entries(
                 gastoFornecedor
             ).forEach(
                 ([fornecedor, valor]) => {
 
-                    if (valor > maiorValor) {
+                    if (
+                        valor > maiorValor
+                    ) {
 
-                        maiorValor = valor;
-                        fornecedorLider = fornecedor;
+                        maiorValor =
+                            valor;
+
+                        fornecedorLider =
+                            fornecedor;
+
                     }
+
                 }
             );
 
-            document
-                .getElementById("kpiInvestimento")
-                .textContent =
-                formatarMoeda(investimento);
 
             document
-                .getElementById("kpiQuantidade")
+                .getElementById(
+                    "kpiInvestimento"
+                )
                 .textContent =
-                formatarNumero(quantidade);
+                formatarMoeda(
+                    investimento
+                );
+
 
             document
-                .getElementById("kpiCustoMedio")
+                .getElementById(
+                    "kpiQuantidade"
+                )
                 .textContent =
-                formatarMoeda(custoMedio);
+                formatarNumero(
+                    quantidade
+                );
+
 
             document
-                .getElementById("kpiFornecedor")
+                .getElementById(
+                    "kpiCustoMedio"
+                )
+                .textContent =
+                formatarMoeda(
+                    custoMedio
+                );
+
+
+            document
+                .getElementById(
+                    "kpiFornecedor"
+                )
                 .textContent =
                 fornecedorLider;
+
+
+            /* NOVOS KPIs */
+
+
+            const valoresFornecedores =
+                Object
+                    .values(
+                        gastoFornecedor
+                    )
+                    .sort(
+                        (a, b) =>
+                            b - a
+                    );
+
+
+            const gastoTop3 =
+                valoresFornecedores
+                    .slice(
+                        0,
+                        3
+                    )
+                    .reduce(
+                        (
+                            total,
+                            valor
+                        ) =>
+                            total + valor,
+                        0
+                    );
+
+
+            const concentracaoTop3 =
+                investimento > 0
+                    ? (
+                        gastoTop3 /
+                        investimento
+                    ) * 100
+                    : 0;
+
+
+            const volumeMedio =
+                dados.length > 0
+                    ? quantidade /
+                      dados.length
+                    : 0;
+
+
+            const maiorGastoFornecedor =
+                valoresFornecedores
+                    .length > 0
+                    ? valoresFornecedores[0]
+                    : 0;
+
+
+            document
+                .getElementById(
+                    "kpiTop3Fornecedores"
+                )
+                .textContent =
+                concentracaoTop3
+                    .toFixed(1) +
+                "%";
+
+
+            document
+                .getElementById(
+                    "kpiVolumeMedio"
+                )
+                .textContent =
+                formatarNumero(
+                    Math.round(
+                        volumeMedio
+                    )
+                );
+
+
+            document
+                .getElementById(
+                    "kpiMaiorGastoFornecedor"
+                )
+                .textContent =
+                formatarMoeda(
+                    maiorGastoFornecedor
+                );
+
         }
+
 
         function atualizarGraficos(dados) {
 
-            atualizarGraficoMensal(dados);
-            atualizarGraficoFornecedor(dados);
-            atualizarGraficoABC(dados);
-            atualizarGraficoGenero(dados);
+            atualizarGraficoMensal(
+                dados
+            );
+
+            atualizarGraficoFornecedor(
+                dados
+            );
+
+            atualizarGraficoABC(
+                dados
+            );
+
+            atualizarGraficoGenero(
+                dados
+            );
+
         }
 
-        function atualizarGraficoMensal(dados) {
+
+        function atualizarGraficoMensal(
+            dados
+        ) {
 
             const meses = [
                 "Jan",
@@ -357,53 +739,100 @@
                 "Dez"
             ];
 
-            const valores = meses.map(mes => {
 
-                return dados
-                    .filter(item => item.mes === mes)
-                    .reduce(
-                        (total, item) =>
-                            total +
-                            Number(item.valor_compra || 0),
-                        0
-                    );
-            });
+            const valores =
+                meses.map(
+                    mes => {
 
-            if (graficoMensal) {
-                graficoMensal.destroy();
+                        return dados
+
+                            .filter(
+                                item =>
+                                    item.mes ===
+                                    mes
+                            )
+
+                            .reduce(
+                                (
+                                    total,
+                                    item
+                                ) =>
+                                    total +
+                                    Number(
+                                        item.valor_compra ||
+                                        0
+                                    ),
+                                0
+                            );
+
+                    }
+                );
+
+
+            if (
+                graficoMensal
+            ) {
+
+                graficoMensal
+                    .destroy();
+
             }
+
 
             graficoMensal =
                 new Chart(
-                    document.getElementById(
-                        "graficoMensal"
-                    ),
+
+                    document
+                        .getElementById(
+                            "graficoMensal"
+                        ),
+
                     {
-                        type: "line",
+
+                        type:
+                            "line",
 
                         data: {
-                            labels: meses,
+
+                            labels:
+                                meses,
 
                             datasets: [
+
                                 {
+
                                     label:
                                         "Valor das compras",
 
-                                    data: valores,
+                                    data:
+                                        valores,
 
-                                    tension: 0.3
+                                    tension:
+                                        0.3
+
                                 }
+
                             ]
+
                         },
 
                         options: {
-                            responsive: true
+
+                            responsive:
+                                true
+
                         }
+
                     }
+
                 );
+
         }
 
-        function atualizarGraficoFornecedor(dados) {
+
+        function atualizarGraficoFornecedor(
+            dados
+        ) {
 
             const resultado =
                 agruparESomar(
@@ -412,53 +841,92 @@
                     "valor_compra"
                 );
 
+
             const ranking =
-                Object.entries(resultado)
+                Object
+                    .entries(
+                        resultado
+                    )
                     .sort(
-                        (a, b) =>
-                            b[1] - a[1]
+                        (
+                            a,
+                            b
+                        ) =>
+                            b[1] -
+                            a[1]
                     );
 
-            if (graficoFornecedor) {
-                graficoFornecedor.destroy();
+
+            if (
+                graficoFornecedor
+            ) {
+
+                graficoFornecedor
+                    .destroy();
+
             }
+
 
             graficoFornecedor =
                 new Chart(
-                    document.getElementById(
-                        "graficoFornecedor"
-                    ),
+
+                    document
+                        .getElementById(
+                            "graficoFornecedor"
+                        ),
+
                     {
-                        type: "bar",
+
+                        type:
+                            "bar",
 
                         data: {
+
                             labels:
                                 ranking.map(
-                                    item => item[0]
+                                    item =>
+                                        item[0]
                                 ),
 
                             datasets: [
+
                                 {
+
                                     label:
                                         "Gasto total",
 
                                     data:
                                         ranking.map(
-                                            item => item[1]
+                                            item =>
+                                                item[1]
                                         )
+
                                 }
+
                             ]
+
                         },
 
                         options: {
-                            responsive: true,
-                            indexAxis: "y"
+
+                            responsive:
+                                true,
+
+                            indexAxis:
+                                "y"
+
                         }
+
                     }
+
                 );
+
         }
 
-        function atualizarGraficoABC(dados) {
+
+        function atualizarGraficoABC(
+            dados
+        ) {
 
             const gastoPorLivro =
                 agruparESomar(
@@ -467,67 +935,106 @@
                     "valor_compra"
                 );
 
+
             const ranking =
-                Object.entries(gastoPorLivro)
+                Object
+                    .entries(
+                        gastoPorLivro
+                    )
                     .sort(
-                        (a, b) =>
-                            b[1] - a[1]
+                        (
+                            a,
+                            b
+                        ) =>
+                            b[1] -
+                            a[1]
                     );
+
 
             const total =
                 ranking.reduce(
-                    (soma, item) =>
-                        soma + item[1],
+                    (
+                        soma,
+                        item
+                    ) =>
+                        soma +
+                        item[1],
                     0
                 );
 
+
             let acumulado = 0;
 
+
             const valoresPercentuais =
-                ranking.map(item => {
+                ranking.map(
+                    item => {
 
-                    acumulado += item[1];
+                        acumulado +=
+                            item[1];
 
-                    return total > 0
-                        ? acumulado /
-                          total *
-                          100
-                        : 0;
-                });
+                        return total > 0
 
-            if (graficoABC) {
-                graficoABC.destroy();
+                            ? acumulado /
+                              total *
+                              100
+
+                            : 0;
+
+                    }
+                );
+
+
+            if (
+                graficoABC
+            ) {
+
+                graficoABC
+                    .destroy();
+
             }
+
 
             graficoABC =
                 new Chart(
-                    document.getElementById(
-                        "graficoABC"
-                    ),
+
+                    document
+                        .getElementById(
+                            "graficoABC"
+                        ),
+
                     {
+
                         data: {
 
                             labels:
                                 ranking.map(
-                                    item => item[0]
+                                    item =>
+                                        item[0]
                                 ),
 
                             datasets: [
 
                                 {
-                                    type: "bar",
+
+                                    type:
+                                        "bar",
 
                                     label:
                                         "Valor comprado",
 
                                     data:
                                         ranking.map(
-                                            item => item[1]
+                                            item =>
+                                                item[1]
                                         )
+
                                 },
 
                                 {
-                                    type: "line",
+
+                                    type:
+                                        "line",
 
                                     label:
                                         "% acumulado",
@@ -537,119 +1044,204 @@
 
                                     yAxisID:
                                         "yPercentual"
+
                                 }
+
                             ]
+
                         },
 
                         options: {
 
-                            responsive: true,
+                            responsive:
+                                true,
 
                             scales: {
 
                                 yPercentual: {
 
-                                    position: "right",
+                                    position:
+                                        "right",
 
-                                    beginAtZero: true,
+                                    beginAtZero:
+                                        true,
 
-                                    max: 100,
+                                    max:
+                                        100,
 
                                     grid: {
+
                                         drawOnChartArea:
                                             false
+
                                     },
 
                                     ticks: {
+
                                         callback:
                                             valor =>
                                                 valor +
                                                 "%"
+
                                     }
+
                                 }
+
                             }
+
                         }
+
                     }
+
                 );
+
         }
 
-        function atualizarGraficoGenero(dados) {
+
+        function atualizarGraficoGenero(
+            dados
+        ) {
 
             const grupos = {};
 
-            dados.forEach(item => {
 
-                const genero = item.genero;
+            dados.forEach(
+                item => {
 
-                if (!grupos[genero]) {
+                    const genero =
+                        item.genero;
 
-                    grupos[genero] = {
-                        valor: 0,
-                        quantidade: 0
-                    };
+
+                    if (
+                        !grupos[
+                            genero
+                        ]
+                    ) {
+
+                        grupos[
+                            genero
+                        ] = {
+
+                            valor:
+                                0,
+
+                            quantidade:
+                                0
+
+                        };
+
+                    }
+
+
+                    grupos[
+                        genero
+                    ].valor +=
+                        Number(
+                            item.valor_compra ||
+                            0
+                        );
+
+
+                    grupos[
+                        genero
+                    ].quantidade +=
+                        Number(
+                            item.quantidade ||
+                            0
+                        );
+
                 }
+            );
 
-                grupos[genero].valor +=
-                    Number(
-                        item.valor_compra ||
-                        0
-                    );
-
-                grupos[genero].quantidade +=
-                    Number(
-                        item.quantidade ||
-                        0
-                    );
-            });
 
             const generos =
-                Object.keys(grupos);
+                Object.keys(
+                    grupos
+                );
+
 
             const custos =
-                generos.map(genero => {
+                generos.map(
+                    genero => {
 
-                    const grupo =
-                        grupos[genero];
+                        const grupo =
+                            grupos[
+                                genero
+                            ];
 
-                    return grupo.quantidade > 0
-                        ? grupo.valor /
-                          grupo.quantidade
-                        : 0;
-                });
+                        return grupo
+                            .quantidade > 0
 
-            if (graficoGenero) {
-                graficoGenero.destroy();
+                            ? grupo.valor /
+                              grupo.quantidade
+
+                            : 0;
+
+                    }
+                );
+
+
+            if (
+                graficoGenero
+            ) {
+
+                graficoGenero
+                    .destroy();
+
             }
+
 
             graficoGenero =
                 new Chart(
-                    document.getElementById(
-                        "graficoGenero"
-                    ),
+
+                    document
+                        .getElementById(
+                            "graficoGenero"
+                        ),
+
                     {
-                        type: "bar",
+
+                        type:
+                            "bar",
 
                         data: {
-                            labels: generos,
+
+                            labels:
+                                generos,
 
                             datasets: [
+
                                 {
+
                                     label:
                                         "Custo médio",
 
-                                    data: custos
+                                    data:
+                                        custos
+
                                 }
+
                             ]
+
                         },
 
                         options: {
-                            responsive: true
+
+                            responsive:
+                                true
+
                         }
+
                     }
+
                 );
+
         }
 
-        function atualizarTabela(dados) {
+
+        function atualizarTabela(
+            dados
+        ) {
 
             const corpo =
                 document
@@ -657,79 +1249,103 @@
                         "tabelaCompras"
                     );
 
+
             corpo.innerHTML = "";
 
-            dados.forEach(item => {
 
-                const linha =
-                    document
-                        .createElement("tr");
+            dados.forEach(
+                item => {
 
-                linha.innerHTML = `
+                    const linha =
+                        document
+                            .createElement(
+                                "tr"
+                            );
 
-                    <td>
-                        ${item.mes}
-                    </td>
 
-                    <td>
-                        ${item.titulo}
-                    </td>
+                    linha.innerHTML = `
 
-                    <td>
-                        ${item.genero}
-                    </td>
+                        <td>
+                            ${item.mes}
+                        </td>
 
-                    <td>
-                        ${item.fornecedor}
-                    </td>
+                        <td>
+                            ${item.titulo}
+                        </td>
 
-                    <td>
-                        ${formatarNumero(
-                            item.quantidade
-                        )}
-                    </td>
+                        <td>
+                            ${item.genero}
+                        </td>
 
-                    <td>
-                        ${formatarMoeda(
-                            item.custo_unitario
-                        )}
-                    </td>
+                        <td>
+                            ${item.fornecedor}
+                        </td>
 
-                    <td>
-                        ${formatarMoeda(
-                            item.valor_compra
-                        )}
-                    </td>
+                        <td>
+                            ${formatarNumero(
+                                item.quantidade
+                            )}
+                        </td>
 
-                    <td>
-                        ${item.prazo_dias} dias
-                    </td>
-                `;
+                        <td>
+                            ${formatarMoeda(
+                                item.custo_unitario
+                            )}
+                        </td>
 
-                corpo.appendChild(linha);
-            });
+                        <td>
+                            ${formatarMoeda(
+                                item.valor_compra
+                            )}
+                        </td>
+
+                        <td>
+                            ${item.prazo_dias} dias
+                        </td>
+
+                    `;
+
+
+                    corpo
+                        .appendChild(
+                            linha
+                        );
+
+                }
+            );
+
         }
 
+
         document
-            .getElementById("filtroMes")
+            .getElementById(
+                "filtroMes"
+            )
             .addEventListener(
                 "change",
                 atualizarDashboard
             );
 
+
         document
-            .getElementById("filtroGenero")
+            .getElementById(
+                "filtroGenero"
+            )
             .addEventListener(
                 "change",
                 atualizarDashboard
             );
 
+
         document
-            .getElementById("filtroFornecedor")
+            .getElementById(
+                "filtroFornecedor"
+            )
             .addEventListener(
                 "change",
                 atualizarDashboard
             );
+
 
         iniciarDashboard();
 
