@@ -388,6 +388,9 @@ tr:hover {
     --texto: #24153d;
     --texto-suave: #6b5b7d;
     --branco: #ffffff;
+
+    --fonte-titulo: 'Cormorant Garamond', serif;
+    --fonte-texto: 'Inter', sans-serif;
 }
 
 
@@ -396,30 +399,21 @@ tr:hover {
 body {
     margin: 0;
 
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    font-family: var(--fonte-texto);
 
     color: var(--texto);
 
     background:
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(196, 181, 253, 0.35),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 90% 10%,
-            rgba(124, 58, 237, 0.12),
-            transparent 30%
-        ),
         linear-gradient(
-            135deg,
-            #fbf9ff 0%,
-            #f3efff 50%,
-            #faf7ff 100%
-        );
+            rgba(248, 245, 255, 0.90),
+            rgba(243, 239, 255, 0.90)
+        ),
+        url("../images/fundo-livraria.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 
     min-height: 100vh;
 }
