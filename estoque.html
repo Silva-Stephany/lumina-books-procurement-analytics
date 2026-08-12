@@ -12,6 +12,8 @@
 
 <body>
 
+    <!-- MENU -->
+
     <nav>
         <a href="index.html">Visão Geral</a>
         <a href="catalogo.html">Livros</a>
@@ -21,16 +23,1152 @@
         <a href="recomendacoes.html">Recomendações</a>
     </nav>
 
+
     <main>
 
-        <h1>📦 Estoque</h1>
+        <h1>📦 Estoque & Giro</h1>
 
         <p>
-            Análise de estoque atual,
-            estoque mínimo, giro e criticidade.
+            Análise do estoque atual, níveis mínimos,
+            giro dos produtos e criticidade de reposição.
         </p>
 
+
+        <!-- FILTROS -->
+
+        <section class="filtros">
+
+            <div>
+                <label for="pesquisaLivro">
+                    Pesquisar livro
+                </label>
+
+                <input
+                    type="text"
+                    id="pesquisaLivro"
+                    placeholder="Digite um título..."
+                >
+            </div>
+
+
+            <div>
+                <label for="filtroGenero">
+                    Gênero
+                </label>
+
+                <select id="filtroGenero">
+                    <option value="Todos">
+                        Todos
+                    </option>
+                </select>
+            </div>
+
+
+            <div>
+                <label for="filtroStatus">
+                    Status do estoque
+                </label>
+
+                <select id="filtroStatus">
+
+                    <option value="Todos">
+                        Todos
+                    </option>
+
+                    <option value="Crítico">
+                        Crítico
+                    </option>
+
+                    <option value="Atenção">
+                        Atenção
+                    </option>
+
+                    <option value="Saudável">
+                        Saudável
+                    </option>
+
+                </select>
+            </div>
+
+        </section>
+
+
+        <!-- KPIs -->
+
+        <section class="cards">
+
+            <div class="card">
+                <span>
+                    Estoque total
+                </span>
+
+                <strong id="kpiEstoqueTotal">
+                    0
+                </strong>
+            </div>
+
+
+            <div class="card">
+                <span>
+                    Títulos críticos
+                </span>
+
+                <strong id="kpiCriticos">
+                    0
+                </strong>
+            </div>
+
+
+            <div class="card">
+                <span>
+                    Maior giro
+                </span>
+
+                <strong id="kpiMaiorGiro">
+                    -
+                </strong>
+            </div>
+
+
+            <div class="card">
+                <span>
+                    Menor giro
+                </span>
+
+                <strong id="kpiMenorGiro">
+                    -
+                </strong>
+            </div>
+
+        </section>
+
+
+        <!-- GRÁFICOS -->
+
+        <section class="graficos">
+
+            <div class="grafico-card">
+
+                <h2>
+                    Estoque atual x estoque mínimo
+                </h2>
+
+                <canvas id="graficoEstoque"></canvas>
+
+            </div>
+
+
+            <div class="grafico-card">
+
+                <h2>
+                    Giro estimado por título
+                </h2>
+
+                <canvas id="graficoGiro"></canvas>
+
+            </div>
+
+
+            <div class="grafico-card">
+
+                <h2>
+                    Distribuição do status de estoque
+                </h2>
+
+                <canvas id="graficoStatus"></canvas>
+
+            </div>
+
+
+            <div class="grafico-card">
+
+                <h2>
+                    Estoque atual por gênero
+                </h2>
+
+                <canvas id="graficoGenero"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- TABELA -->
+
+        <section class="tabela-container">
+
+            <h2>
+                Situação dos livros em estoque
+            </h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Livro</th>
+                        <th>Gênero</th>
+                        <th>Estoque inicial</th>
+                        <th>Comprado</th>
+                        <th>Vendido</th>
+                        <th>Estoque atual</th>
+                        <th>Estoque mínimo</th>
+                        <th>Giro</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="tabelaEstoque"></tbody>
+
+            </table>
+
+        </section>
+
     </main>
+
+
+    <!-- CHART.JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <!-- FUNÇÕES COMPARTILHADAS -->
+
+    <script src="js/shared.js"></script>
+
+
+    <!-- DASHBOARD DE ESTOQUE -->
+
+    <script>
+
+        let livros = [];
+        let vendas = [];
+        let compras = [];
+
+        let dadosEstoque = [];
+
+        let graficoEstoque;
+        let graficoGiro;
+        let graficoStatus;
+        let graficoGenero;
+
+
+        // ========================================
+        // INICIAR DASHBOARD
+        // ========================================
+
+        async function iniciarDashboard() {
+
+            livros =
+                await carregarCSV(
+                    "data/livros.csv"
+                );
+
+            vendas =
+                await carregarCSV(
+                    "data/vendas.csv"
+                );
+
+            compras =
+                await carregarCSV(
+                    "data/compras.csv"
+                );
+
+            calcularEstoque();
+
+            prepararGeneros();
+
+            atualizarDashboard();
+
+        }
+
+
+        // ========================================
+        // CALCULAR ESTOQUE
+        // ========================================
+
+        function calcularEstoque() {
+
+            dadosEstoque =
+                livros.map(livro => {
+
+                    const vendasLivro =
+                        vendas.filter(
+                            venda =>
+                                venda.livro_id ===
+                                livro.livro_id
+                        );
+
+                    const comprasLivro =
+                        compras.filter(
+                            compra =>
+                                compra.livro_id ===
+                                livro.livro_id
+                        );
+
+
+                    const totalVendido =
+                        vendasLivro.reduce(
+                            (total, venda) =>
+                                total +
+                                Number(
+                                    venda.quantidade || 0
+                                ),
+                            0
+                        );
+
+
+                    const totalComprado =
+                        comprasLivro.reduce(
+                            (total, compra) =>
+                                total +
+                                Number(
+                                    compra.quantidade || 0
+                                ),
+                            0
+                        );
+
+
+                    const estoqueInicial =
+                        Number(
+                            livro.estoque_inicial || 0
+                        );
+
+
+                    const estoqueMinimo =
+                        Number(
+                            livro.estoque_minimo || 0
+                        );
+
+
+                    let estoqueAtual =
+                        estoqueInicial
+                        +
+                        totalComprado
+                        -
+                        totalVendido;
+
+
+                    if (estoqueAtual < 0) {
+                        estoqueAtual = 0;
+                    }
+
+
+                    const giro =
+                        estoqueInicial > 0
+                        ?
+                        totalVendido /
+                        estoqueInicial
+                        :
+                        0;
+
+
+                    let status = "Saudável";
+
+
+                    if (
+                        estoqueAtual <=
+                        estoqueMinimo
+                    ) {
+
+                        status = "Crítico";
+
+                    }
+
+                    else if (
+                        estoqueAtual <=
+                        estoqueMinimo * 1.5
+                    ) {
+
+                        status = "Atenção";
+
+                    }
+
+
+                    return {
+
+                        livro_id:
+                            livro.livro_id,
+
+                        titulo:
+                            livro.titulo,
+
+                        genero:
+                            livro.genero,
+
+                        estoqueInicial:
+                            estoqueInicial,
+
+                        comprado:
+                            totalComprado,
+
+                        vendido:
+                            totalVendido,
+
+                        estoqueAtual:
+                            estoqueAtual,
+
+                        estoqueMinimo:
+                            estoqueMinimo,
+
+                        giro:
+                            giro,
+
+                        status:
+                            status
+
+                    };
+
+                });
+
+        }
+
+
+        // ========================================
+        // GÊNEROS
+        // ========================================
+
+        function prepararGeneros() {
+
+            const generos = [
+                ...new Set(
+                    dadosEstoque.map(
+                        item =>
+                            item.genero
+                    )
+                )
+            ].sort();
+
+
+            generos.forEach(genero => {
+
+                const opcao =
+                    document.createElement(
+                        "option"
+                    );
+
+                opcao.value =
+                    genero;
+
+                opcao.textContent =
+                    genero;
+
+                document
+                    .getElementById(
+                        "filtroGenero"
+                    )
+                    .appendChild(
+                        opcao
+                    );
+
+            });
+
+        }
+
+
+        // ========================================
+        // FILTRAR
+        // ========================================
+
+        function obterDadosFiltrados() {
+
+            const pesquisa =
+                document
+                    .getElementById(
+                        "pesquisaLivro"
+                    )
+                    .value
+                    .toLowerCase();
+
+
+            const genero =
+                document
+                    .getElementById(
+                        "filtroGenero"
+                    )
+                    .value;
+
+
+            const status =
+                document
+                    .getElementById(
+                        "filtroStatus"
+                    )
+                    .value;
+
+
+            return dadosEstoque.filter(
+                item => {
+
+                    const correspondePesquisa =
+                        item.titulo
+                            .toLowerCase()
+                            .includes(
+                                pesquisa
+                            );
+
+
+                    const correspondeGenero =
+                        genero === "Todos"
+                        ||
+                        item.genero ===
+                        genero;
+
+
+                    const correspondeStatus =
+                        status === "Todos"
+                        ||
+                        item.status ===
+                        status;
+
+
+                    return (
+                        correspondePesquisa
+                        &&
+                        correspondeGenero
+                        &&
+                        correspondeStatus
+                    );
+
+                }
+            );
+
+        }
+
+
+        // ========================================
+        // ATUALIZAR DASHBOARD
+        // ========================================
+
+        function atualizarDashboard() {
+
+            const dados =
+                obterDadosFiltrados();
+
+            atualizarKPIs(dados);
+
+            atualizarGraficos(dados);
+
+            atualizarTabela(dados);
+
+        }
+
+
+        // ========================================
+        // KPIs
+        // ========================================
+
+        function atualizarKPIs(dados) {
+
+            const estoqueTotal =
+                dados.reduce(
+                    (total, item) =>
+                        total +
+                        item.estoqueAtual,
+                    0
+                );
+
+
+            const criticos =
+                dados.filter(
+                    item =>
+                        item.status ===
+                        "Crítico"
+                ).length;
+
+
+            const rankingGiro =
+                [...dados]
+                    .sort(
+                        (a, b) =>
+                            b.giro -
+                            a.giro
+                    );
+
+
+            const maiorGiro =
+                rankingGiro.length > 0
+                ?
+                rankingGiro[0]
+                :
+                null;
+
+
+            const menorGiro =
+                rankingGiro.length > 0
+                ?
+                rankingGiro[
+                    rankingGiro.length - 1
+                ]
+                :
+                null;
+
+
+            document
+                .getElementById(
+                    "kpiEstoqueTotal"
+                )
+                .textContent =
+                    formatarNumero(
+                        estoqueTotal
+                    );
+
+
+            document
+                .getElementById(
+                    "kpiCriticos"
+                )
+                .textContent =
+                    criticos;
+
+
+            document
+                .getElementById(
+                    "kpiMaiorGiro"
+                )
+                .textContent =
+                    maiorGiro
+                    ?
+                    maiorGiro.titulo
+                    :
+                    "-";
+
+
+            document
+                .getElementById(
+                    "kpiMenorGiro"
+                )
+                .textContent =
+                    menorGiro
+                    ?
+                    menorGiro.titulo
+                    :
+                    "-";
+
+        }
+
+
+        // ========================================
+        // GRÁFICOS
+        // ========================================
+
+        function atualizarGraficos(dados) {
+
+            atualizarGraficoEstoque(
+                dados
+            );
+
+            atualizarGraficoGiro(
+                dados
+            );
+
+            atualizarGraficoStatus(
+                dados
+            );
+
+            atualizarGraficoGenero(
+                dados
+            );
+
+        }
+
+
+        // ESTOQUE ATUAL X MÍNIMO
+
+        function atualizarGraficoEstoque(
+            dados
+        ) {
+
+            const ranking =
+                [...dados]
+                    .sort(
+                        (a, b) =>
+                            a.estoqueAtual -
+                            b.estoqueAtual
+                    )
+                    .slice(
+                        0,
+                        12
+                    );
+
+
+            if (graficoEstoque) {
+                graficoEstoque.destroy();
+            }
+
+
+            graficoEstoque =
+                new Chart(
+
+                    document.getElementById(
+                        "graficoEstoque"
+                    ),
+
+                    {
+
+                        type:
+                            "bar",
+
+                        data: {
+
+                            labels:
+                                ranking.map(
+                                    item =>
+                                        item.titulo
+                                ),
+
+                            datasets: [
+
+                                {
+                                    label:
+                                        "Estoque atual",
+
+                                    data:
+                                        ranking.map(
+                                            item =>
+                                                item.estoqueAtual
+                                        )
+                                },
+
+                                {
+                                    label:
+                                        "Estoque mínimo",
+
+                                    data:
+                                        ranking.map(
+                                            item =>
+                                                item.estoqueMinimo
+                                        )
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true,
+
+                            indexAxis:
+                                "y"
+
+                        }
+
+                    }
+
+                );
+
+        }
+
+
+        // GIRO
+
+        function atualizarGraficoGiro(
+            dados
+        ) {
+
+            const ranking =
+                [...dados]
+                    .sort(
+                        (a, b) =>
+                            b.giro -
+                            a.giro
+                    )
+                    .slice(
+                        0,
+                        12
+                    );
+
+
+            if (graficoGiro) {
+                graficoGiro.destroy();
+            }
+
+
+            graficoGiro =
+                new Chart(
+
+                    document.getElementById(
+                        "graficoGiro"
+                    ),
+
+                    {
+
+                        type:
+                            "bar",
+
+                        data: {
+
+                            labels:
+                                ranking.map(
+                                    item =>
+                                        item.titulo
+                                ),
+
+                            datasets: [
+
+                                {
+                                    label:
+                                        "Giro estimado",
+
+                                    data:
+                                        ranking.map(
+                                            item =>
+                                                Number(
+                                                    item.giro.toFixed(2)
+                                                )
+                                        )
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true,
+
+                            indexAxis:
+                                "y"
+
+                        }
+
+                    }
+
+                );
+
+        }
+
+
+        // STATUS
+
+        function atualizarGraficoStatus(
+            dados
+        ) {
+
+            const status = {
+
+                "Crítico": 0,
+                "Atenção": 0,
+                "Saudável": 0
+
+            };
+
+
+            dados.forEach(item => {
+
+                status[
+                    item.status
+                ]++;
+
+            });
+
+
+            if (graficoStatus) {
+                graficoStatus.destroy();
+            }
+
+
+            graficoStatus =
+                new Chart(
+
+                    document.getElementById(
+                        "graficoStatus"
+                    ),
+
+                    {
+
+                        type:
+                            "doughnut",
+
+                        data: {
+
+                            labels:
+                                Object.keys(
+                                    status
+                                ),
+
+                            datasets: [
+
+                                {
+                                    data:
+                                        Object.values(
+                                            status
+                                        )
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true
+
+                        }
+
+                    }
+
+                );
+
+        }
+
+
+        // ESTOQUE POR GÊNERO
+
+        function atualizarGraficoGenero(
+            dados
+        ) {
+
+            const resultado = {};
+
+
+            dados.forEach(item => {
+
+                if (
+                    !resultado[
+                        item.genero
+                    ]
+                ) {
+
+                    resultado[
+                        item.genero
+                    ] = 0;
+
+                }
+
+
+                resultado[
+                    item.genero
+                ] +=
+                    item.estoqueAtual;
+
+            });
+
+
+            if (graficoGenero) {
+                graficoGenero.destroy();
+            }
+
+
+            graficoGenero =
+                new Chart(
+
+                    document.getElementById(
+                        "graficoGenero"
+                    ),
+
+                    {
+
+                        type:
+                            "bar",
+
+                        data: {
+
+                            labels:
+                                Object.keys(
+                                    resultado
+                                ),
+
+                            datasets: [
+
+                                {
+                                    label:
+                                        "Estoque atual",
+
+                                    data:
+                                        Object.values(
+                                            resultado
+                                        )
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true
+
+                        }
+
+                    }
+
+                );
+
+        }
+
+
+        // ========================================
+        // TABELA
+        // ========================================
+
+        function atualizarTabela(dados) {
+
+            const corpo =
+                document.getElementById(
+                    "tabelaEstoque"
+                );
+
+
+            corpo.innerHTML = "";
+
+
+            dados
+                .sort(
+                    (a, b) =>
+                        a.estoqueAtual -
+                        b.estoqueAtual
+                )
+                .forEach(item => {
+
+
+                    const linha =
+                        document.createElement(
+                            "tr"
+                        );
+
+
+                    linha.innerHTML = `
+
+                        <td>
+                            ${item.titulo}
+                        </td>
+
+                        <td>
+                            ${item.genero}
+                        </td>
+
+                        <td>
+                            ${formatarNumero(
+                                item.estoqueInicial
+                            )}
+                        </td>
+
+                        <td>
+                            ${formatarNumero(
+                                item.comprado
+                            )}
+                        </td>
+
+                        <td>
+                            ${formatarNumero(
+                                item.vendido
+                            )}
+                        </td>
+
+                        <td>
+                            ${formatarNumero(
+                                item.estoqueAtual
+                            )}
+                        </td>
+
+                        <td>
+                            ${formatarNumero(
+                                item.estoqueMinimo
+                            )}
+                        </td>
+
+                        <td>
+                            ${item.giro.toFixed(2)}x
+                        </td>
+
+                        <td>
+                            <span class="
+                                status-badge
+                                ${obterClasseStatus(
+                                    item.status
+                                )}
+                            ">
+                                ${item.status}
+                            </span>
+                        </td>
+
+                    `;
+
+
+                    corpo.appendChild(
+                        linha
+                    );
+
+                });
+
+        }
+
+
+        // ========================================
+        // CLASSE DO STATUS
+        // ========================================
+
+        function obterClasseStatus(
+            status
+        ) {
+
+            if (
+                status === "Crítico"
+            ) {
+
+                return "status-critico";
+
+            }
+
+
+            if (
+                status === "Atenção"
+            ) {
+
+                return "status-atencao";
+
+            }
+
+
+            return "status-saudavel";
+
+        }
+
+
+        // ========================================
+        // EVENTOS
+        // ========================================
+
+        document
+            .getElementById(
+                "pesquisaLivro"
+            )
+            .addEventListener(
+                "input",
+                atualizarDashboard
+            );
+
+
+        document
+            .getElementById(
+                "filtroGenero"
+            )
+            .addEventListener(
+                "change",
+                atualizarDashboard
+            );
+
+
+        document
+            .getElementById(
+                "filtroStatus"
+            )
+            .addEventListener(
+                "change",
+                atualizarDashboard
+            );
+
+
+        iniciarDashboard();
+
+    </script>
 
 </body>
 
