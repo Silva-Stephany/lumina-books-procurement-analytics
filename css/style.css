@@ -290,3 +290,85 @@ tr:hover {
     }
 
 }
+/* ========================================
+   MÓDULOS DA VISÃO GERAL - AJUSTE VISUAL
+======================================== */
+
+.modulos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.modulo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 22px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    text-decoration: none !important;
+    color: #172033 !important;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    transition: 0.2s ease;
+}
+
+.modulo-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
+
+    border-color: #4f46e5;
+}
+
+.modulo-card strong {
+    display: block;
+
+    font-size: 19px;
+
+    color: #111827;
+
+    text-decoration: none;
+}
+
+.modulo-card span {
+    display: block;
+
+    color: #6b7280;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    text-decoration: none;
+}
+
+.modulo-card:visited,
+.modulo-card:active,
+.modulo-card:focus {
+    color: #172033;
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+
+    .modulos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .modulos {
+        grid-template-columns: 1fr;
+    }
+
+}
