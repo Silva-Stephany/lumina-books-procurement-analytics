@@ -1,5 +1,7 @@
 # 📚 Lumina Books — Procurement Analytics
 
+**Autora: Stephany Gonçalves da Silva**
+
 Projeto fictício de análise de dados desenvolvido para demonstrar competências em **Compras, Procurement, análise de dados, visualização, estoque e gestão de fornecedores**.
 
 🔗 **Dashboard online:**  
@@ -395,7 +397,7 @@ As regras utilizadas para reposição, classificação de fornecedores, giro e o
 
 ## 👩‍💻 Autora
 
-**Stephany Silva**
+**Stephany Gonçalves da Silva**
 
 Projeto desenvolvido para portfólio profissional.
 
