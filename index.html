@@ -23,16 +23,538 @@
 
     <main>
 
-        <h1>📚 Lumina Books</h1>
+        <h1>📊 Lumina Books</h1>
 
-        <h2>Procurement Analytics</h2>
+        <h2>Procurement Analytics Portal</h2>
 
         <p>
-            Portal interativo para análise de vendas,
-            compras, estoque e fornecedores.
+            Visão executiva de vendas, compras, estoque e fornecedores
+            para apoio à tomada de decisão.
         </p>
 
+        <p>
+            <strong>
+                Projeto fictício desenvolvido para fins de portfólio.
+            </strong>
+        </p>
+
+        <!-- KPIs -->
+
+        <section class="cards">
+
+            <div class="card">
+                <span>Receita total</span>
+                <strong id="kpiReceita">R$ 0</strong>
+            </div>
+
+            <div class="card">
+                <span>Investimento em compras</span>
+                <strong id="kpiCompras">R$ 0</strong>
+            </div>
+
+            <div class="card">
+                <span>Unidades vendidas</span>
+                <strong id="kpiVendidas">0</strong>
+            </div>
+
+            <div class="card">
+                <span>Títulos críticos</span>
+                <strong id="kpiCriticos">0</strong>
+            </div>
+
+        </section>
+
+        <!-- GRÁFICOS -->
+
+        <section class="graficos">
+
+            <div class="grafico-card">
+                <h2>Receita mensal</h2>
+                <canvas id="graficoReceita"></canvas>
+            </div>
+
+            <div class="grafico-card">
+                <h2>Compras mensais</h2>
+                <canvas id="graficoCompras"></canvas>
+            </div>
+
+            <div class="grafico-card">
+                <h2>Receita por gênero</h2>
+                <canvas id="graficoGenero"></canvas>
+            </div>
+
+            <div class="grafico-card">
+                <h2>Gasto por fornecedor</h2>
+                <canvas id="graficoFornecedor"></canvas>
+            </div>
+
+        </section>
+
+        <!-- ACESSO AOS MÓDULOS -->
+
+        <section class="tabela-container">
+
+            <h2>Módulos de análise</h2>
+
+            <div class="modulos">
+
+                <a class="modulo-card" href="catalogo.html">
+                    <strong>📚 Livros</strong>
+                    <span>
+                        Catálogo, vendas, receita e desempenho por título.
+                    </span>
+                </a>
+
+                <a class="modulo-card" href="compras.html">
+                    <strong>🧾 Compras</strong>
+                    <span>
+                        Investimento, custos, fornecedores e Curva ABC.
+                    </span>
+                </a>
+
+                <a class="modulo-card" href="estoque.html">
+                    <strong>📦 Estoque</strong>
+                    <span>
+                        Estoque mínimo, giro e situação dos produtos.
+                    </span>
+                </a>
+
+                <a class="modulo-card" href="fornecedores.html">
+                    <strong>🏢 Fornecedores</strong>
+                    <span>
+                        Participação, prazo, avaliação e dependência.
+                    </span>
+                </a>
+
+                <a class="modulo-card" href="recomendacoes.html">
+                    <strong>🧠 Recomendações</strong>
+                    <span>
+                        Priorização e sugestão de reposição.
+                    </span>
+                </a>
+
+            </div>
+
+        </section>
+
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/shared.js"></script>
+
+    <script>
+
+        let livros = [];
+        let vendas = [];
+        let compras = [];
+
+        let graficoReceita;
+        let graficoCompras;
+        let graficoGenero;
+        let graficoFornecedor;
+
+
+        async function iniciarDashboard() {
+
+            livros = await carregarCSV("data/livros.csv");
+            vendas = await carregarCSV("data/vendas.csv");
+            compras = await carregarCSV("data/compras.csv");
+
+            atualizarKPIs();
+            atualizarGraficos();
+
+        }
+
+
+        function atualizarKPIs() {
+
+            const receita =
+                somar(vendas, "receita");
+
+            const investimento =
+                somar(compras, "valor_compra");
+
+            const vendidas =
+                somar(vendas, "quantidade");
+
+
+            let criticos = 0;
+
+
+            livros.forEach(livro => {
+
+                const vendasLivro =
+                    vendas.filter(
+                        item =>
+                            item.livro_id ===
+                            livro.livro_id
+                    );
+
+
+                const comprasLivro =
+                    compras.filter(
+                        item =>
+                            item.livro_id ===
+                            livro.livro_id
+                    );
+
+
+                const vendido =
+                    somar(
+                        vendasLivro,
+                        "quantidade"
+                    );
+
+
+                const comprado =
+                    somar(
+                        comprasLivro,
+                        "quantidade"
+                    );
+
+
+                let estoqueAtual =
+                    Number(
+                        livro.estoque_inicial || 0
+                    )
+                    +
+                    comprado
+                    -
+                    vendido;
+
+
+                if (estoqueAtual < 0) {
+                    estoqueAtual = 0;
+                }
+
+
+                const estoqueMinimo =
+                    Number(
+                        livro.estoque_minimo || 0
+                    );
+
+
+                if (
+                    estoqueAtual <=
+                    estoqueMinimo
+                ) {
+                    criticos++;
+                }
+
+            });
+
+
+            document
+                .getElementById("kpiReceita")
+                .textContent =
+                    formatarMoeda(receita);
+
+
+            document
+                .getElementById("kpiCompras")
+                .textContent =
+                    formatarMoeda(investimento);
+
+
+            document
+                .getElementById("kpiVendidas")
+                .textContent =
+                    formatarNumero(vendidas);
+
+
+            document
+                .getElementById("kpiCriticos")
+                .textContent =
+                    criticos;
+
+        }
+
+
+        function atualizarGraficos() {
+
+            criarGraficoReceita();
+
+            criarGraficoCompras();
+
+            criarGraficoGenero();
+
+            criarGraficoFornecedor();
+
+        }
+
+
+        function criarGraficoReceita() {
+
+            const meses = [
+                "Jan",
+                "Fev",
+                "Mar",
+                "Abr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Set",
+                "Out",
+                "Nov",
+                "Dez"
+            ];
+
+
+            const valores =
+                meses.map(mes => {
+
+                    return vendas
+                        .filter(
+                            item =>
+                                item.mes === mes
+                        )
+                        .reduce(
+                            (total, item) =>
+                                total +
+                                Number(
+                                    item.receita || 0
+                                ),
+                            0
+                        );
+
+                });
+
+
+            graficoReceita =
+                new Chart(
+                    document.getElementById(
+                        "graficoReceita"
+                    ),
+                    {
+                        type: "line",
+
+                        data: {
+
+                            labels:
+                                meses,
+
+                            datasets: [
+
+                                {
+                                    label:
+                                        "Receita",
+
+                                    data:
+                                        valores,
+
+                                    tension:
+                                        0.3
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+                            responsive: true
+                        }
+                    }
+                );
+
+        }
+
+
+        function criarGraficoCompras() {
+
+            const meses = [
+                "Jan",
+                "Fev",
+                "Mar",
+                "Abr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Set",
+                "Out",
+                "Nov",
+                "Dez"
+            ];
+
+
+            const valores =
+                meses.map(mes => {
+
+                    return compras
+                        .filter(
+                            item =>
+                                item.mes === mes
+                        )
+                        .reduce(
+                            (total, item) =>
+                                total +
+                                Number(
+                                    item.valor_compra || 0
+                                ),
+                            0
+                        );
+
+                });
+
+
+            graficoCompras =
+                new Chart(
+                    document.getElementById(
+                        "graficoCompras"
+                    ),
+                    {
+                        type: "line",
+
+                        data: {
+
+                            labels:
+                                meses,
+
+                            datasets: [
+
+                                {
+                                    label:
+                                        "Compras",
+
+                                    data:
+                                        valores,
+
+                                    tension:
+                                        0.3
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+                            responsive: true
+                        }
+                    }
+                );
+
+        }
+
+
+        function criarGraficoGenero() {
+
+            const resultado =
+                agruparESomar(
+                    vendas,
+                    "genero",
+                    "receita"
+                );
+
+
+            graficoGenero =
+                new Chart(
+                    document.getElementById(
+                        "graficoGenero"
+                    ),
+                    {
+                        type: "doughnut",
+
+                        data: {
+
+                            labels:
+                                Object.keys(
+                                    resultado
+                                ),
+
+                            datasets: [
+
+                                {
+                                    data:
+                                        Object.values(
+                                            resultado
+                                        )
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+                            responsive: true
+                        }
+                    }
+                );
+
+        }
+
+
+        function criarGraficoFornecedor() {
+
+            const resultado =
+                agruparESomar(
+                    compras,
+                    "fornecedor",
+                    "valor_compra"
+                );
+
+
+            const ranking =
+                Object.entries(
+                    resultado
+                )
+                .sort(
+                    (a, b) =>
+                        b[1] - a[1]
+                );
+
+
+            graficoFornecedor =
+                new Chart(
+                    document.getElementById(
+                        "graficoFornecedor"
+                    ),
+                    {
+                        type: "bar",
+
+                        data: {
+
+                            labels:
+                                ranking.map(
+                                    item =>
+                                        item[0]
+                                ),
+
+                            datasets: [
+
+                                {
+                                    label:
+                                        "Gasto",
+
+                                    data:
+                                        ranking.map(
+                                            item =>
+                                                item[1]
+                                        )
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true,
+
+                            indexAxis:
+                                "y"
+
+                        }
+                    }
+                );
+
+        }
+
+
+        iniciarDashboard();
+
+    </script>
 
 </body>
 
