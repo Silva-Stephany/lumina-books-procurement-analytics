@@ -23,14 +23,894 @@
 
     <main>
 
-        <h1>🏢 Fornecedores</h1>
+        <h1>🏢 Supplier Analytics</h1>
 
         <p>
-            Análise de gastos, prazos,
-            participação e desempenho dos fornecedores.
+            Análise de gastos, participação, prazo de entrega,
+            avaliação e concentração por fornecedor.
         </p>
 
+        <section class="filtros">
+
+            <div>
+                <label for="filtroFornecedor">Fornecedor</label>
+
+                <select id="filtroFornecedor">
+                    <option value="Todos">Todos</option>
+                </select>
+            </div>
+
+        </section>
+
+        <section class="cards">
+
+            <div class="card">
+                <span>Fornecedores ativos</span>
+                <strong id="kpiAtivos">0</strong>
+            </div>
+
+            <div class="card">
+                <span>Maior concentração</span>
+                <strong id="kpiConcentracao">0%</strong>
+            </div>
+
+            <div class="card">
+                <span>Entrega mais rápida</span>
+                <strong id="kpiMaisRapido">-</strong>
+            </div>
+
+            <div class="card">
+                <span>Melhor avaliação</span>
+                <strong id="kpiMelhorAvaliacao">-</strong>
+            </div>
+
+        </section>
+
+        <section class="graficos">
+
+            <div class="grafico-card">
+                <h2>Gasto por fornecedor</h2>
+                <canvas id="graficoGasto"></canvas>
+            </div>
+
+            <div class="grafico-card">
+                <h2>Participação no gasto total</h2>
+                <canvas id="graficoParticipacao"></canvas>
+            </div>
+
+            <div class="grafico-card">
+                <h2>Prazo médio de entrega</h2>
+                <canvas id="graficoPrazo"></canvas>
+            </div>
+
+            <div class="grafico-card">
+                <h2>Avaliação dos fornecedores</h2>
+                <canvas id="graficoAvaliacao"></canvas>
+            </div>
+
+        </section>
+
+        <section class="tabela-container">
+
+            <h2>Supplier Scorecard</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Fornecedor</th>
+                        <th>Gasto total</th>
+                        <th>% do gasto</th>
+                        <th>Unidades</th>
+                        <th>Prazo médio</th>
+                        <th>Avaliação</th>
+                        <th>Dependência</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelaFornecedores"></tbody>
+
+            </table>
+
+        </section>
+
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/shared.js"></script>
+
+    <script>
+
+        let compras = [];
+        let fornecedores = [];
+        let scorecard = [];
+
+        let graficoGasto;
+        let graficoParticipacao;
+        let graficoPrazo;
+        let graficoAvaliacao;
+
+        async function iniciarDashboard() {
+
+            compras =
+                await carregarCSV(
+                    "data/compras.csv"
+                );
+
+            fornecedores =
+                await carregarCSV(
+                    "data/fornecedores.csv"
+                );
+
+            criarScorecard();
+
+            prepararFiltro();
+
+            atualizarDashboard();
+
+        }
+
+
+        function criarScorecard() {
+
+            const gastoTotal =
+                somar(
+                    compras,
+                    "valor_compra"
+                );
+
+
+            scorecard =
+                fornecedores.map(
+                    fornecedor => {
+
+
+                        const comprasFornecedor =
+                            compras.filter(
+                                compra =>
+                                    compra.fornecedor_id ===
+                                    fornecedor.fornecedor_id
+                            );
+
+
+                        const gasto =
+                            somar(
+                                comprasFornecedor,
+                                "valor_compra"
+                            );
+
+
+                        const unidades =
+                            somar(
+                                comprasFornecedor,
+                                "quantidade"
+                            );
+
+
+                        const prazoTotal =
+                            somar(
+                                comprasFornecedor,
+                                "prazo_dias"
+                            );
+
+
+                        const prazoMedio =
+                            comprasFornecedor.length > 0
+                            ?
+                            prazoTotal /
+                            comprasFornecedor.length
+                            :
+                            Number(
+                                fornecedor.prazo_medio || 0
+                            );
+
+
+                        const participacao =
+                            gastoTotal > 0
+                            ?
+                            gasto /
+                            gastoTotal *
+                            100
+                            :
+                            0;
+
+
+                        let dependencia =
+                            "Baixa";
+
+
+                        if (
+                            participacao >= 30
+                        ) {
+
+                            dependencia =
+                                "Alta";
+
+                        }
+
+                        else if (
+                            participacao >= 20
+                        ) {
+
+                            dependencia =
+                                "Média";
+
+                        }
+
+
+                        return {
+
+                            id:
+                                fornecedor.fornecedor_id,
+
+                            fornecedor:
+                                fornecedor.fornecedor,
+
+                            gasto:
+                                gasto,
+
+                            participacao:
+                                participacao,
+
+                            unidades:
+                                unidades,
+
+                            prazoMedio:
+                                prazoMedio,
+
+                            avaliacao:
+                                Number(
+                                    fornecedor.avaliacao || 0
+                                ),
+
+                            dependencia:
+                                dependencia
+
+                        };
+
+                    }
+                );
+
+        }
+
+
+        function prepararFiltro() {
+
+            const select =
+                document.getElementById(
+                    "filtroFornecedor"
+                );
+
+
+            scorecard.forEach(
+                item => {
+
+                    const opcao =
+                        document.createElement(
+                            "option"
+                        );
+
+                    opcao.value =
+                        item.fornecedor;
+
+                    opcao.textContent =
+                        item.fornecedor;
+
+                    select.appendChild(
+                        opcao
+                    );
+
+                }
+            );
+
+        }
+
+
+        function obterDadosFiltrados() {
+
+            const filtro =
+                document
+                    .getElementById(
+                        "filtroFornecedor"
+                    )
+                    .value;
+
+
+            if (
+                filtro === "Todos"
+            ) {
+
+                return scorecard;
+
+            }
+
+
+            return scorecard.filter(
+                item =>
+                    item.fornecedor ===
+                    filtro
+            );
+
+        }
+
+
+        function atualizarDashboard() {
+
+            const dados =
+                obterDadosFiltrados();
+
+            atualizarKPIs(dados);
+
+            atualizarGraficos(dados);
+
+            atualizarTabela(dados);
+
+        }
+
+
+        function atualizarKPIs(dados) {
+
+            document
+                .getElementById(
+                    "kpiAtivos"
+                )
+                .textContent =
+                    dados.filter(
+                        item =>
+                            item.gasto > 0
+                    ).length;
+
+
+            let maiorConcentracao =
+                null;
+
+
+            dados.forEach(
+                item => {
+
+                    if (
+                        !maiorConcentracao
+                        ||
+                        item.participacao >
+                        maiorConcentracao.participacao
+                    ) {
+
+                        maiorConcentracao =
+                            item;
+
+                    }
+
+                }
+            );
+
+
+            document
+                .getElementById(
+                    "kpiConcentracao"
+                )
+                .textContent =
+                    maiorConcentracao
+                    ?
+                    maiorConcentracao.participacao
+                        .toFixed(1) + "%"
+                    :
+                    "0%";
+
+
+            const ativos =
+                dados.filter(
+                    item =>
+                        item.gasto > 0
+                );
+
+
+            const maisRapido =
+                ativos.length > 0
+                ?
+                [...ativos].sort(
+                    (a, b) =>
+                        a.prazoMedio -
+                        b.prazoMedio
+                )[0]
+                :
+                null;
+
+
+            document
+                .getElementById(
+                    "kpiMaisRapido"
+                )
+                .textContent =
+                    maisRapido
+                    ?
+                    maisRapido.fornecedor
+                    :
+                    "-";
+
+
+            const melhorAvaliado =
+                dados.length > 0
+                ?
+                [...dados].sort(
+                    (a, b) =>
+                        b.avaliacao -
+                        a.avaliacao
+                )[0]
+                :
+                null;
+
+
+            document
+                .getElementById(
+                    "kpiMelhorAvaliacao"
+                )
+                .textContent =
+                    melhorAvaliado
+                    ?
+                    melhorAvaliado.fornecedor
+                    :
+                    "-";
+
+        }
+
+
+        function atualizarGraficos(
+            dados
+        ) {
+
+            atualizarGraficoGasto(
+                dados
+            );
+
+            atualizarGraficoParticipacao(
+                dados
+            );
+
+            atualizarGraficoPrazo(
+                dados
+            );
+
+            atualizarGraficoAvaliacao(
+                dados
+            );
+
+        }
+
+
+        function atualizarGraficoGasto(
+            dados
+        ) {
+
+            const ranking =
+                [...dados]
+                    .sort(
+                        (a, b) =>
+                            b.gasto -
+                            a.gasto
+                    );
+
+
+            if (
+                graficoGasto
+            ) {
+
+                graficoGasto.destroy();
+
+            }
+
+
+            graficoGasto =
+                new Chart(
+
+                    document.getElementById(
+                        "graficoGasto"
+                    ),
+
+                    {
+
+                        type:
+                            "bar",
+
+                        data: {
+
+                            labels:
+                                ranking.map(
+                                    item =>
+                                        item.fornecedor
+                                ),
+
+                            datasets: [
+
+                                {
+
+                                    label:
+                                        "Gasto total",
+
+                                    data:
+                                        ranking.map(
+                                            item =>
+                                                item.gasto
+                                        )
+
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true,
+
+                            indexAxis:
+                                "y"
+
+                        }
+
+                    }
+
+                );
+
+        }
+
+
+        function atualizarGraficoParticipacao(
+            dados
+        ) {
+
+            if (
+                graficoParticipacao
+            ) {
+
+                graficoParticipacao.destroy();
+
+            }
+
+
+            graficoParticipacao =
+                new Chart(
+
+                    document.getElementById(
+                        "graficoParticipacao"
+                    ),
+
+                    {
+
+                        type:
+                            "doughnut",
+
+                        data: {
+
+                            labels:
+                                dados.map(
+                                    item =>
+                                        item.fornecedor
+                                ),
+
+                            datasets: [
+
+                                {
+
+                                    data:
+                                        dados.map(
+                                            item =>
+                                                item.gasto
+                                        )
+
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true
+
+                        }
+
+                    }
+
+                );
+
+        }
+
+
+        function atualizarGraficoPrazo(
+            dados
+        ) {
+
+            const ranking =
+                [...dados]
+                    .sort(
+                        (a, b) =>
+                            a.prazoMedio -
+                            b.prazoMedio
+                    );
+
+
+            if (
+                graficoPrazo
+            ) {
+
+                graficoPrazo.destroy();
+
+            }
+
+
+            graficoPrazo =
+                new Chart(
+
+                    document.getElementById(
+                        "graficoPrazo"
+                    ),
+
+                    {
+
+                        type:
+                            "bar",
+
+                        data: {
+
+                            labels:
+                                ranking.map(
+                                    item =>
+                                        item.fornecedor
+                                ),
+
+                            datasets: [
+
+                                {
+
+                                    label:
+                                        "Prazo médio (dias)",
+
+                                    data:
+                                        ranking.map(
+                                            item =>
+                                                Number(
+                                                    item.prazoMedio
+                                                        .toFixed(1)
+                                                )
+                                        )
+
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true
+
+                        }
+
+                    }
+
+                );
+
+        }
+
+
+        function atualizarGraficoAvaliacao(
+            dados
+        ) {
+
+            const ranking =
+                [...dados]
+                    .sort(
+                        (a, b) =>
+                            b.avaliacao -
+                            a.avaliacao
+                    );
+
+
+            if (
+                graficoAvaliacao
+            ) {
+
+                graficoAvaliacao.destroy();
+
+            }
+
+
+            graficoAvaliacao =
+                new Chart(
+
+                    document.getElementById(
+                        "graficoAvaliacao"
+                    ),
+
+                    {
+
+                        type:
+                            "bar",
+
+                        data: {
+
+                            labels:
+                                ranking.map(
+                                    item =>
+                                        item.fornecedor
+                                ),
+
+                            datasets: [
+
+                                {
+
+                                    label:
+                                        "Avaliação",
+
+                                    data:
+                                        ranking.map(
+                                            item =>
+                                                item.avaliacao
+                                        )
+
+                                }
+
+                            ]
+
+                        },
+
+                        options: {
+
+                            responsive:
+                                true,
+
+                            scales: {
+
+                                y: {
+
+                                    beginAtZero:
+                                        true,
+
+                                    max:
+                                        5
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                );
+
+        }
+
+
+        function atualizarTabela(
+            dados
+        ) {
+
+            const corpo =
+                document.getElementById(
+                    "tabelaFornecedores"
+                );
+
+
+            corpo.innerHTML = "";
+
+
+            [...dados]
+                .sort(
+                    (a, b) =>
+                        b.gasto -
+                        a.gasto
+                )
+                .forEach(
+                    item => {
+
+
+                        const linha =
+                            document.createElement(
+                                "tr"
+                            );
+
+
+                        linha.innerHTML = `
+
+                            <td>
+                                ${item.fornecedor}
+                            </td>
+
+                            <td>
+                                ${formatarMoeda(
+                                    item.gasto
+                                )}
+                            </td>
+
+                            <td>
+                                ${item.participacao
+                                    .toFixed(1)}%
+                            </td>
+
+                            <td>
+                                ${formatarNumero(
+                                    item.unidades
+                                )}
+                            </td>
+
+                            <td>
+                                ${item.prazoMedio
+                                    .toFixed(1)} dias
+                            </td>
+
+                            <td>
+                                ${item.avaliacao
+                                    .toFixed(1)}
+                            </td>
+
+                            <td>
+                                <span class="
+                                    status-badge
+                                    ${classeDependencia(
+                                        item.dependencia
+                                    )}
+                                ">
+                                    ${item.dependencia}
+                                </span>
+                            </td>
+
+                        `;
+
+
+                        corpo.appendChild(
+                            linha
+                        );
+
+                    }
+                );
+
+        }
+
+
+        function classeDependencia(
+            dependencia
+        ) {
+
+            if (
+                dependencia === "Alta"
+            ) {
+
+                return "status-critico";
+
+            }
+
+
+            if (
+                dependencia === "Média"
+            ) {
+
+                return "status-atencao";
+
+            }
+
+
+            return "status-saudavel";
+
+        }
+
+
+        document
+            .getElementById(
+                "filtroFornecedor"
+            )
+            .addEventListener(
+                "change",
+                atualizarDashboard
+            );
+
+
+        iniciarDashboard();
+
+    </script>
 
 </body>
 
