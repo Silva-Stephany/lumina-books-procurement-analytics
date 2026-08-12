@@ -372,3 +372,352 @@ tr:hover {
     }
 
 }
+/* ========================================
+   IDENTIDADE VISUAL - LUMINA BOOKS
+======================================== */
+
+:root {
+    --roxo-escuro: #2e1065;
+    --roxo: #5b21b6;
+    --roxo-medio: #7c3aed;
+    --lilas: #c4b5fd;
+    --lilas-claro: #ede9fe;
+    --fundo: #f8f5ff;
+    --texto: #24153d;
+    --texto-suave: #6b5b7d;
+    --branco: #ffffff;
+}
+
+
+/* FUNDO GERAL */
+
+body {
+    margin: 0;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: var(--texto);
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(196, 181, 253, 0.35),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(124, 58, 237, 0.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #fbf9ff 0%,
+            #f3efff 50%,
+            #faf7ff 100%
+        );
+
+    min-height: 100vh;
+}
+
+
+/* MENU SUPERIOR */
+
+nav {
+    background:
+        linear-gradient(
+            90deg,
+            #2e1065,
+            #4c1d95,
+            #5b21b6
+        );
+
+    padding: 16px 28px;
+
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    box-shadow:
+        0 4px 16px
+        rgba(46, 16, 101, 0.22);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+
+nav a {
+    color: white !important;
+
+    text-decoration: none;
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    font-weight: 500;
+
+    transition: 0.2s;
+}
+
+
+nav a:hover {
+    background:
+        rgba(255, 255, 255, 0.16);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* ÁREA PRINCIPAL */
+
+main {
+    max-width: 1400px;
+
+    margin: auto;
+
+    padding: 40px;
+}
+
+
+/* TÍTULOS */
+
+h1 {
+    color: var(--roxo-escuro);
+
+    font-size: 36px;
+
+    margin-bottom: 5px;
+}
+
+
+h2 {
+    color: var(--roxo);
+
+}
+
+
+main > p {
+    color: var(--texto-suave);
+
+    line-height: 1.6;
+}
+
+
+/* CARDS DE KPI */
+
+.card {
+    background:
+        rgba(255, 255, 255, 0.93);
+
+    padding: 22px;
+
+    border-radius: 16px;
+
+    border:
+        1px solid
+        rgba(124, 58, 237, 0.13);
+
+    box-shadow:
+        0 8px 25px
+        rgba(91, 33, 182, 0.08);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.card:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(91, 33, 182, 0.14);
+}
+
+
+.card span {
+    color: var(--texto-suave);
+}
+
+
+.card strong {
+    color: var(--roxo-escuro);
+}
+
+
+/* FILTROS */
+
+.filtros input,
+.filtros select {
+    background-color: white;
+
+    border:
+        1px solid
+        #d8ccf5;
+
+    color: var(--texto);
+}
+
+
+.filtros input:focus,
+.filtros select:focus {
+    outline: none;
+
+    border-color:
+        var(--roxo-medio);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(124, 58, 237, 0.12);
+}
+
+
+/* CARDS DOS GRÁFICOS */
+
+.grafico-card {
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    border-radius: 16px;
+
+    border:
+        1px solid
+        rgba(124, 58, 237, 0.12);
+
+    box-shadow:
+        0 8px 25px
+        rgba(91, 33, 182, 0.07);
+}
+
+
+.grafico-card h2 {
+    color: var(--roxo-escuro);
+}
+
+
+/* TABELAS */
+
+.tabela-container {
+    background:
+        rgba(255, 255, 255, 0.95);
+
+    border:
+        1px solid
+        rgba(124, 58, 237, 0.12);
+
+    box-shadow:
+        0 8px 25px
+        rgba(91, 33, 182, 0.07);
+}
+
+
+th {
+    background:
+        linear-gradient(
+            90deg,
+            #3b0764,
+            #5b21b6
+        );
+
+    color: white;
+}
+
+
+tr:hover {
+    background-color:
+        #f5f0ff;
+}
+
+
+/* MÓDULOS */
+
+.modulo-card {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f6f1ff
+        );
+
+    border:
+        1px solid
+        #ddd0fb;
+
+    box-shadow:
+        0 8px 22px
+        rgba(91, 33, 182, 0.08);
+}
+
+
+.modulo-card:hover {
+    border-color:
+        var(--roxo-medio);
+
+    box-shadow:
+        0 12px 30px
+        rgba(91, 33, 182, 0.16);
+}
+
+
+.modulo-card strong {
+    color:
+        var(--roxo-escuro);
+}
+
+
+/* DETALHE VISUAL DE LIVRARIA */
+
+main::before {
+    content: "LUMINA BOOKS  •  DATA • BOOKS • INSIGHTS";
+
+    display: block;
+
+    margin-bottom: 25px;
+
+    padding: 10px 14px;
+
+    border-left:
+        4px solid
+        var(--roxo-medio);
+
+    background:
+        rgba(255, 255, 255, 0.55);
+
+    color:
+        var(--roxo);
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    border-radius: 0 8px 8px 0;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 600px) {
+
+    main {
+        padding: 25px 16px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    nav {
+        padding: 12px;
+    }
+
+}
