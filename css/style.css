@@ -197,3 +197,29 @@ tr:hover {
     }
 
 }
+/* ========================================
+   STATUS DO ESTOQUE
+======================================== */
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-critico {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.status-atencao {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.status-saudavel {
+    background-color: #dcfce7;
+    color: #166534;
+}
