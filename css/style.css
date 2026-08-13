@@ -1585,30 +1585,76 @@ tbody tr:hover {
 
 }
 /* =========================================
-   RODAPÉ
+   ASSINATURA DO PROJETO
 ========================================= */
 
 .rodape {
-    margin-top: 50px;
-    padding: 22px 20px;
-    text-align: center;
+    margin-top: 55px;
+    padding: 28px 20px;
 
-    background: rgba(78, 45, 112, 0.95);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(76, 38, 110, 0.98),
+            rgba(112, 65, 150, 0.96)
+        );
+
+    color: white;
+}
+
+.assinatura-projeto {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+    text-align: left;
+}
+
+.assinatura-icone {
+    font-size: 2.5rem;
+}
+
+.assinatura-projeto small {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    letter-spacing: 1.7px;
+
+    opacity: 0.75;
+}
+
+.assinatura-projeto h3 {
+    margin: 0 0 4px;
+
     color: white;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.55rem;
 }
 
-.rodape p {
-    margin: 0 0 6px;
-    font-size: 0.9rem;
+.assinatura-projeto p {
+    margin: 0;
+
+    font-size: 0.78rem;
+
+    color: rgba(255, 255, 255, 0.78);
 }
 
-.rodape strong {
-    font-weight: 700;
-}
+@media (max-width: 600px) {
 
-.rodape small {
-    font-size: 0.75rem;
-    opacity: 0.78;
+    .assinatura-projeto {
+        text-align: center;
+        flex-direction: column;
+        gap: 8px;
+    }
+
 }
